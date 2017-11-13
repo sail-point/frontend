@@ -6,12 +6,22 @@
     "page": true,
     "$": true,
     "marked": true,
-    "hljs": true
+    "hljs": true,
+    "__API_URL__": false,
+    "__TITLE__": false,
+    "__DEBUG__": false,
+    "react": true
   },
   "extends": "eslint:recommended",
   "parserOptions": {
+    "sourceType": "module",
     "ecmaVersion": 6,
-    "ecmaFeatures": {"impliedStrict": true}
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "experimentalObjectRestSpread": true,
+      "module": true,
+      "jsx": true
+      }
   },
   "env": {
     "browser": true,
@@ -20,12 +30,14 @@
     "es6": true
   },
   "rules": {
+    "react/prop-types": [0],
+    "comma-dangle": ["error", "always-multiline"],
     "semi": ["error", "never"],
     "eqeqeq": ["error", "always"],
     "no-template-curly-in-string": "error",
     "no-console": "off",
     "no-undefined": "off",
-    "indent": ["error", 2],
+    "indent": ["error", 2, {"SwitchCase": 1}],
     "quotes": ["warn", "single", {"allowTemplateLiterals": true}],
     "no-multi-spaces": ["warn", {"exceptions": { "VariableDeclarator": true }}],
     "no-trailing-spaces": "warn",
