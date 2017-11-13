@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {BrowserRouter,Route} from 'react-router-dom'
 
-import Landing from './landing'
+import Landing from '../landing'
 
 class App extends React.Component {
   componentWillMount(){
