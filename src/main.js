@@ -20,4 +20,4 @@ ReactDom.render(
   <Provider store={store} >
     <App />
   </Provider>
-, container)
+  , container)
