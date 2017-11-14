@@ -9,7 +9,7 @@ class ProductList extends React.Component {
       updateProduct,
     } = this.props
 
-    let {editing} = this.state
+    //let {editing} = this.props
 
     return (
       <ul className='product-list'>

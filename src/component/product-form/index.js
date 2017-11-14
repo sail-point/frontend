@@ -2,12 +2,11 @@ import React from 'react'
 import * as util from '../../lib/util.js'
 
 let emptyState = {
-  firstName: '',
-  firstNameDirty: false,
-  firstNameError: 'First name is required.',
-  lastName: '',
-  lastNameDirty: false,
-  lastNameError: 'Last name is required.',
+  name: '',
+  nameDirty: false,
+  nameError: 'Name is required.',
+  price: '',
+  category: '',
 }
 
 class ProductForm extends React.Component {
@@ -60,32 +59,47 @@ class ProductForm extends React.Component {
         className='product-form'
         onSubmit={this.handleSubmit}>
 
-        {util.renderIf(this.state.firstNameDirty,
-          <p>{this.state.firstNameError}</p>
+        {util.renderIf(this.state.nameDirty,
+          <p>{this.state.nameError}</p>
         )}
-        <label htmlFor='firstName'>First Name</label>
+        <label htmlFor='name'>Name</label>
         <input
-          id='firstName'
-          name='firstName'
-          value={this.state.firstName}
+          id='name'
+          name='name'
+          value={this.state.name}
           onChange={this.handleChange}
-          placeholder='First Name'
+          placeholder='Name'
         />
 
-        {util.renderIf(this.state.lastNameDirty,
-          <p>{this.state.lastNameError}</p>
-        )}
-        <label htmlFor='lastName'>Last Name</label>
+        <label htmlFor='price'>Price</label>
         <input
-          id='lastName'
-          name='lastName'
-          value={this.state.lastName}
+          id='price'
+          name='price'
+          value={this.state.price}
           onChange={this.handleChange}
-          placeholder='Last Name'
+          placeholder='Price'
+        />
+
+        <label htmlFor='category'>Category</label>
+        <input
+          id='category'
+          name='category'
+          value={this.state.category}
+          onChange={this.handleChange}
+          placeholder='Category'
+        />
+
+        <label htmlFor='available'>Available</label>
+        <input
+          type='checkbox'
+          id='available'
+          name='available'
+          value={this.state.available}
+          onChange={this.handleChange}
         />
 
         <p>
-          <button type='submit'>{this.props.profile ? 'update' : 'create'} profile</button>
+          <button type='submit'>{this.props.product ? 'update' : 'create'} product</button>
         </p>
       </form>
     )
