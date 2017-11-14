@@ -1,4 +1,4 @@
-import {rehydrateCookie} from '../lib/redux-persist.js'
+import { rehydrateCookie } from '../lib/redux-persist.js'
 
 let intialState = rehydrateCookie('X-SailPoint-token', null) 
 
