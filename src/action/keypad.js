@@ -6,8 +6,7 @@ export const set = (employee) => ({
 })
 
 export const login = (pin) => (store) => {
-  // let {token} = store.getState()
-  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblNlZWQiOiI2Yjk4MjNmZWQwZjg5YjBjMGE4YTE5Zjc2OTE0NTdkZGI1NDEwOTBkNGQ5Yjc0YzJmMmQyOGMxODE4NzEzZGE0NGE4YzU0YmE3ODY1MzM4ZmQ1NGQ5YTZkNmY1YzlhYmUxZWMxODdlMmYyYTRhZjM3NDg4MTU3MDQ2M2QxMzM0ZSIsImlhdCI6MTUxMDY4NTgxNiwiZXhwIjoxNTExMjkwNjE2fQ.0W0exlx2pVqZUTtrsD1BiFV61kY_XQRux46TmydJDpg'
+  let {token} = store.getState()
   return superagent.get(`${__API_URL__}/employees/pin/${pin}`)
     .set('Authorization', `Bearer ${token}`)
     .then(res => {

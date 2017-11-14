@@ -32,11 +32,9 @@ class Keypad extends React.Component {
       .then(action => {
         console.log(`${this.props.employee.firstName} has logged in.`)
         this.setState(emptyState)
-        console.log('PROPS = ', this.props)
         this.props.history.push('/employee/dashboard')
       })
       .catch(() => {
-        console.log('ERROR')
         this.setState({pin: '', pinCount: 0, pinDirty: true, pinClass: 'pinBox shaker'})
         setTimeout(() => this.setState({pinClass: 'pinBox'}), 250)
       })
@@ -51,8 +49,7 @@ class Keypad extends React.Component {
         prevPin = prevState.pin
       return {pin: prevPin + number, pinCount: prevState.pinCount+1}
     }, () => {
-      console.log('Current PIN:', this.state.pin)
-      // Take out setTimeout when able to send to back end
+
       if (this.state.pinCount === 4)
         this.handleSubmit()
     })
