@@ -1,26 +1,15 @@
 import superagent from 'superagent';
 
 export const set = (employee) => ({
-  type: 'EMPLOYEE_SET',
-  payload:,
+  type: 'EMPLOYEE_CREATE',
+  payload: ///what is payload
 })
 
-//create employee should come from admin reducer??
-
-export const fetch = () => (store) => {
+export const fetch = (pin) => (store) => {
   let { token } = store.getState()
-  return superagent.get(`${__API_URL__}/employees/me`)
+  return superagent.get(`${__API_URL__}/employees/pin/${employee.pin}`)
   .set('Authorization', `Bearer ${ token }`)
   .then(response => {
     return store.dispatch(set(response.body))
   })
 }
-
-// export const update = (employee) => (store) => {
-//   let { token } = store.getState()
-//   return superagent.get(`${__API_URL__}/employees/${ user._id }`)
-//   .set('Authorization', `Bearer ${ token }`)
-//   .then(response => {
-//     return store.dispatch(set(response.body))
-//   })
-// }
