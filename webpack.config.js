@@ -17,7 +17,7 @@ let plugins = [
     __API_URL__: JSON.stringify(process.env.API_URL),
   }),
   new EnvironmentPlugin({
-    NODE_ENV: process.env.NODE_ENV
+    NODE_ENV: process.env.NODE_ENV,
   }),
 ]
 
@@ -61,7 +61,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: 'image/[name].[hash].[ext]'
+            name: 'image/[name].[hash].[ext]',
           },
         }],
       },
