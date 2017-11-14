@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {BrowserRouter,Route} from 'react-router-dom'
 import Keypad from '../keypad'
+import Dashboard from '../dashboard'
 
 import Landing from '../landing'
 
@@ -17,6 +18,7 @@ class App extends React.Component {
           <div>
             <Route exact path='/' component={Landing} />
             <Route exact path='/employee/login' component={Keypad} />
+            <Route exact path='/employee/dashboard' component={Dashboard} />
           </div>
         </BrowserRouter>
       </div>
