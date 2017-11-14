@@ -1,0 +1,130 @@
+@import 'vars';
+
+html {
+  position: relative;
+  head,link,script { display: none; }
+  body { position: relative; }
+  span, em, strong, i { display: inline }
+}
+
+strong {
+  font-weight: bold;
+}
+
+a, span {
+  display: inline;
+}
+
+h1 {font-size: 2.5em;}
+h2 {font-size: 2.25em;}
+h3 {font-size: 2em;}
+h4 {font-size: 1.75em;}
+
+a {
+  text-decoration: underline;
+  font-family: sans-serif;
+  color: $color-blue;
+
+  &:active { color: $color-blue * 0.5; }
+  &:visited { color:  $color-fuchsia * 0.8; }
+  &:hover {
+    color: $color-blue;
+    cursor: pointer;
+  }
+}
+
+button {
+  width: auto;
+  display: inline;
+  padding: 0.25em;
+  cursor: pointer;
+  border: 1px solid black;
+}    
+
+form {
+  input {
+    margin: 0 1em .5em 0;
+  }
+
+  input[type='text'] {
+    border: 2px solid black;
+    display: inline;
+    width: 50%;
+    max-width: 20em;
+    padding-left: $pad;
+    padding-top: .1em;
+    padding-bottom: .1em;
+    border-color: $color-orange;
+    -webkit-transition: border-radius .25s;
+    transition: border-radius .25s;
+    &:focus {
+      border-radius: .5em;
+      border-color: $color-green;
+    }
+  }
+
+  input[type='email'] {
+    border: 2px solid black;
+    display: inline;
+    width: 50%;
+    max-width: 20em;
+    padding-left: $pad;
+    padding-top: .1em;
+    padding-bottom: .1em;
+    border-color: $color-orange;
+    -webkit-transition: border-radius .25s;
+    transition: border-radius .25s;
+    &:focus {
+      border-radius: .5em;
+      border-color: $color-green;
+    }
+  }
+
+  input[type='password'] {
+    border: 2px solid black;
+    display: inline;
+    width: 50%;
+    max-width: 20em;
+    padding-left: $pad;
+    padding-top: .1em;
+    padding-bottom: .1em;
+    border-color: $color-orange;
+    -webkit-transition: border-radius .25s;
+    transition: border-radius .25s;
+    &:focus {
+      border-radius: .5em;
+      border-color: $color-green;
+    }
+  }
+
+  input[type='number'] {
+    border: 2px solid black;
+    width: 30%;
+    max-width: 5em;
+    padding-left: $pad;
+    padding-top: .1em;
+    padding-bottom: .1em;
+    display: inline;
+    border-color: $color-orange;
+    -webkit-transition: border-radius .25s;
+    transition: border-radius .25s;
+    &:focus {
+      border-radius: .5em;
+      border-color: $color-green;
+    }
+  }
+
+  fieldset {
+    padding: $pad;
+    // border: 3px solid black;
+    // border-style: groove;
+    legend {
+      font-size: 1.5em;
+      font-family: $font-mouse;
+      width: auto;
+      text-align: center;
+      border: 1px solid black;
+      padding: .1em;
+    }
+  }
+}
