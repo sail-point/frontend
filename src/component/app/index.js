@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {BrowserRouter,Route} from 'react-router-dom'
-import Keypad from '../keypad'
-
 import Landing from '../landing'
+import ProductList from '../product-list'
+import Keypad from '../keypad'
 
 class App extends React.Component {
   componentWillMount(){
@@ -16,6 +16,7 @@ class App extends React.Component {
         <BrowserRouter>
           <div>
             <Route exact path='/' component={Landing} />
+            <Route exact path='/admin/product' component={ProductList} />
             <Route exact path='/employee/login' component={Keypad} />
           </div>
         </BrowserRouter>
