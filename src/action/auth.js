@@ -21,8 +21,8 @@ export const signup = (user) => (store) => {
 }
 
 export const login = (user) => (store) => {
-  return superagent.post(`${__API_URL__}/admin/login`)
-    .auth(user.storeName, user.email, user.password)
+  return superagent.get(`${__API_URL__}/admin/login`)
+    .auth(user.storeName, user.password)
     .withCredentials()
     .then(response => {
       console.log('ADMIN_LOGIN ::', { response })
