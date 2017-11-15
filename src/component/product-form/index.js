@@ -12,19 +12,10 @@ let emptyState = {
 class ProductForm extends React.Component {
   constructor(props){
     super(props)
-    this.state = props.products ? {...emptyState, ...props.product} : emptyState
+    this.state = props.product ? {...emptyState, ...props.product} : emptyState
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleValidate = this.handleValidate.bind(this)
-  }
-
-  componentWillReceiveProps(props){
-    if(props.product)
-      this.setState(props.product)
-  }
-
-  componentDidMount(){
-    console.log('mounted')
   }
 
   handleChange(e){
@@ -62,8 +53,8 @@ class ProductForm extends React.Component {
         {util.renderIf(this.state.nameDirty,
           <p>{this.state.nameError}</p>
         )}
-        <label htmlFor='name'>Name</label>
         <input
+          type='text'
           id='name'
           name='name'
           value={this.state.name}
@@ -71,8 +62,8 @@ class ProductForm extends React.Component {
           placeholder='Name'
         />
 
-        <label htmlFor='price'>Price</label>
         <input
+          type='text'
           id='price'
           name='price'
           value={this.state.price}
@@ -80,8 +71,8 @@ class ProductForm extends React.Component {
           placeholder='Price'
         />
 
-        <label htmlFor='category'>Category</label>
         <input
+          type='text'
           id='category'
           name='category'
           value={this.state.category}

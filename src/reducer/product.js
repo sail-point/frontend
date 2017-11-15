@@ -6,20 +6,30 @@ export const validateProduct = (product) => {
     throw new Error('__VALIDATION_ERROR__ invalid product')
 }
 
-export default (state=null, {type, payload}) => {
+let emptyState = {
+  count: 0,
+  data: [],
+}
+
+export default (state=emptyState, {type, payload}) => {
+  let temp
   switch(type){
     case 'PRODUCT_SET':
-      validateProduct(payload)
       return payload
     case 'PRODUCT_CREATE':
       validateProduct(payload)
-      return [payload, ...state]
+      state.data.push(payload)
+      return state
     case 'PRODUCT_UPDATE':
       validateProduct(payload)
-      return state.map(product => product.id ? payload : product)
+      temp = state.data.map(product => product._id===payload._id ? payload : product)
+      state.data = temp
+      return state
     case 'PRODUCT_REMOVE':
       validateProduct(payload)
-      return state.filter(product => product._id !== payload._id)
+      temp = state.data.filter(product => product._id !== payload._id)
+      state.data = temp
+      return state
     default:
       return state
   }

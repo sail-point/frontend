@@ -11,15 +11,12 @@ class ProductItem extends React.Component {
       editing: false,
     }
 
-    this.handleCreate = this.handleCreate.bind(this)
+    this.handleDestroy = this.handleDestroy.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
   }
 
-  handleCreate(product){
-    this.props.productCreate(product)
-      .then(() => {
-        this.props.history.push('/admin/product')
-      })
+  handleDestroy(){
+    this.props.destroyProduct(this.props.product)
   }
 
   handleUpdate(product){
@@ -32,45 +29,42 @@ class ProductItem extends React.Component {
       product,
       productCreate,
     } = this.props
-
     return (
-      <div>
-        <h1>Product</h1>
-        { product ?
-          <div>
-            <h2>{product.name}</h2>
-            { this.state.editing ?
-              <div>
-                <ProductForm product={product} onComplete={this.handleUpdate} />
-                <p>
-                  <button onClick={() => this.setState({editing: false})}>
-                  cancel
-                  </button>
-                </p>
-              </div>
-              :
+      <div className='product-item'>
+        <div>
+          { !this.state.editing ?
+            <div>
+              <p>{product.name}</p>
+              <p>{product.price}</p>
+              <p>{product.category}</p>
+              <button onClick={this.handleDestroy}>Delete </button>
               <p>
                 <button onClick={() => this.setState({editing: true})}>
-                edit product
+              edit product
                 </button>
               </p>
-            }
-          </div>
-          :
-          <ProductForm onComplete={this.handleCreate} />
-        }
+            </div>
+            :
+            <div>
+              <ProductForm product={product} onComplete={this.handleUpdate} />
+              <p>
+                <button onClick={() => this.setState({editing: false})}>
+                cancel
+                </button>
+              </p>
+            </div>
+          }
+        </div>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  product: state.Product,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   productCreate: (product) => dispatch(Product.create(product)),
-  productUpdate: (product) => dispatch(Product.update(product)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductItem)

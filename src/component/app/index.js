@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {BrowserRouter,Route} from 'react-router-dom'
 import Landing from '../landing'
-import ProductList from '../product-list'
+import Product from '../product'
 import Keypad from '../keypad'
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
         <BrowserRouter>
           <div>
             <Route exact path='/' component={Landing} />
-            <Route exact path='/admin/product' component={ProductList} />
+            <Route exact path='/admin/product' component={Product} />
             <Route exact path='/employee/login' component={Keypad} />
           </div>
         </BrowserRouter>
