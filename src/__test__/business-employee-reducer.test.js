@@ -20,36 +20,31 @@ describe('businessEmployee reducer', () => {
       },
     }
     let state = reducer(undefined, action)
-    expect(state).toEqual(action.payload)
+    expect(state).toEqual([action.payload])
   })
 
-  // test('should fail with no payload', () => {
-  //   let shouldFail = () => {
-  //     reducer(undefined, {type: 'CLIENT_PROFILE_SET'})
-  //   }
-  //   expect(shouldFail).toThrow('profile required')
-  // })
-  //
-  // test('should fail with invalid payload', () => {
-  //   let shouldFail = () => {
-  //     reducer(undefined, {
-  //       type: 'CLIENT_PROFILE_SET',
-  //       payload: {},
-  //     })
-  //   }
-  //   expect(shouldFail).toThrow('__VALIDATION_ERROR__ invalid profile')
-  // })
-  //
-  // test('should return null on TOKEN_REMOVE', () => {
-  //   let state = reducer('hello world', {type: 'TOKEN_REMOVE'})
-  //   expect(state).toEqual(null)
-  // })
-  //
-  // test('should return the state', () => {
-  //   let state = reducer('hello world', {type: ''})
-  //   expect(state).toEqual('hello world')
-  // })
-  //
+  test('create should fail with no payload', () => {
+    let shouldFail = () => {
+      reducer(undefined, {type: 'EMPLOYEE_CREATE'})
+    }
+    expect(shouldFail).toThrow('Employee required')
+  })
+
+  test('create should fail with invalid payload', () => {
+    let shouldFail = () => {
+      reducer(undefined, {
+        type: 'EMPLOYEE_CREATE',
+        payload: {},
+      })
+    }
+    expect(shouldFail).toThrow('Employee requires a first name, last name, title, email, phone number, hours-per-week, and salary-per-hour')
+  })
+
+  test('should return the state', () => {
+    let state = reducer('hello world', {type: ''})
+    expect(state).toEqual('hello world')
+  })
+
   // test('should set the photo', () => {
   //   let action  = {
   //     type: 'CLIENT_PROFILE_SET',

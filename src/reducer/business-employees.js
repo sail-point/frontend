@@ -8,14 +8,14 @@ export const validateEmployee = (employee) => {
 
 export default (state=[], {type, payload}) => {
   switch(type){
+    case 'EMPLOYEE_CREATE':
+      validateEmployee(payload)
+      return [payload, ...state]
     case 'EMPLOYEES_SET':
       if(!Array.isArray(payload))
         throw new Error('employees mush be an array')
       payload.forEach(validateEmployee)
       return payload
-    case 'EMPLOYEE_CREATE':
-      validateEmployee(payload)
-      return [payload, ...state]
     case 'EMPLOYEE_UPDATE':
       validateEmployee(payload)
       return state.map(employee => employee._id === payload._id ? payload : employee)
