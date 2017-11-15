@@ -20,7 +20,7 @@ export const destroy = (employee) => ({
   payload: employee,
 })
 
-export const fetchAllRequest = () => (store) => {
+export const fetchAll = () => (store) => {
   let { token } = store.getState()
   return superagent.get(`${__API_URL__}/employees`)
   .set('Authorization', `Bearer ${ token }`)

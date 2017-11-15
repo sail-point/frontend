@@ -120,6 +120,14 @@ class EmployeeForm extends React.Component {
           />
 
         <input
+          type='text'
+          name='title'
+          placeholder='title'
+          value={ this.state.title }
+          onChange={ this.handleChange }
+          />
+
+        <input
           type='email'
           name='email'
           placeholder='email'
@@ -159,7 +167,23 @@ class EmployeeForm extends React.Component {
           onChange={this.handleChange}
           />
 
-        <button type='submit'> {type} </button>
+        <input
+          name='hired'
+          placeholder='hired'
+          type='date'
+          value={this.state.hired}
+          onChange={this.handleChange}
+          />
+
+        <input
+          name='terminated'
+          placeholder='terminated'
+          type='date'
+          value={this.state.terminated}
+          onChange={this.handleChange}
+          />
+
+        <button type='submit'> Submit </button>
       </form>
     )
   }

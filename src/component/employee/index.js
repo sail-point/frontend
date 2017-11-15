@@ -12,14 +12,12 @@ class Employee extends React.Component {
     }
 
     this.handleCreate = this.handleCreate.bind(this)
-    this.handleUpdate = this.handleUpdate.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
   }
 
   handleCreate(employee){
     this.props.employeeCreate(employee)
     .then(() => {
-      this.props.history.push('/employee')
+      this.props.history.push('/admin/employee')
     })
   }
 
