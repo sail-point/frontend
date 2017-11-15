@@ -2,7 +2,7 @@ import React from 'react'
 import * as util from '../../lib/util.js'
 import validator from 'validator'
 
-let clearState = {
+let emptyState = {
   firstName: '',
   firstNameDirty: false,
   firstNameError: 'First Name is required',
@@ -55,100 +55,103 @@ class EmployeeForm extends React.Component {
         if(!validator.isEmail(value))
           return 'you must provide a valid email'
         return null
-      case 'password':
-        if(value.length < 8)
-          return 'Password must be at least 8 characters long'
-        if(!validator.isAlphanumeric(value))
-          return 'Your password may only contain numbers and letters'
+      case 'phoneNumber':
+        if(!validator.isMobilePhone(value))
+          return 'you must provide a valid phone number'
+        return null
+      case 'hoursPerWeek':
+        if(!validator.isAlpha(value))
+          return 'You must provide hours per week'
+        return null
+      case 'salaryPerHour':
+        if(!validator.isAlpha(value))
+          return 'You must provide salary per hour'
+        return null
+      case 'pin':
+        if(value.length !== 8)
+          return 'Pin must be 4 characters long'
         return null
       default:
         return null
     }
   }
 
-  handleChange(event){
-    let { name, value } = event.target;
+  handleChange(e){
+    let {name, value, type} = e.target
+    value = type === 'number' ? Number(value) : value
     this.setState({
       [name]: value,
-      [`${ name }Dirty`]: true,
-      [`${ name }Error`]: this.handleValidate(name, value),
-    });
-  };
+      [`${name}Dirty`]: true,
+      [`${name}Error`]: value ? null : emptyState[`${name}Error`],
+    })
+  }
 
-  handleSubmit(event){
-    event.preventDefault();
-    let { storeNameError, emailError, passwordError } = this.state
-    if(this.props.type === 'login' || !storeNameError && !emailError && !passwordError){
-      this.props.onComplete(this.state)
-      this.setState(emptyState)
-    } else {
-      this.setState({
-        storeNameDirty: true,
-        emailDirty: true,
-        addressDirty: true,
-        phoneDirty: true,
-        webiste: true,
-        passwordDirty: true,
-        submitted: true,
-      })
-    }
+  handleSubmit(e){
+    e.preventDefault()
+    this.props.onComplete(this.state)
+    this.setState(emptyState)
   }
 
 
   render(){
-    let { type } = this.props
-
-    type = type === 'login' ? type : 'signup';
-
+    let buttonText = this.props.employee ? 'update employee' : 'create employee'
     return (
       <form
-        className='admin-form'
-        noValidate
+        className='employee-form'
         onSubmit={ this.handleSubmit } >
 
         <input
-          name='storeName'
-          placeholder='Company Name'
           type='text'
-          value={ this.state.storeName }
+          name='firstName'
+          placeholder='first name'
+          value={ this.state.firstName }
           onChange={ this.handleChange }
           />
 
         <input
+          type='text'
+          name='lastName'
+          placeholder='last name'
+          value={ this.state.lastName }
+          onChange={ this.handleChange }
+          />
+
+        <input
+          type='email'
           name='email'
           placeholder='email'
-          type='email'
           value={ this.state.email }
           onChange={ this.handleChange }
           />
-        <input
-          name='address'
-          placeholder='address'
-          type='text'// TODO: address input type??
-          value={ this.state.address }
-          onChange={ this.handleChange }
-        />
 
         <input
-          name='phone'
-          placeholder='phone'
-          type='text'// TODO: numerical or string?
-          value={ this.state.phone }
+          name='phoneNumber'
+          placeholder='phone number'
+          type='text'
+          value={ this.state.phoneNumber }
           onChange={ this.handleChange }
           />
 
         <input
-          name='webiste'
-          placeholder='website'
-          type='URL'// TODO: check input type
-          value={ this.state.city }
+          name='hoursPerWeek'
+          placeholder='hours-per-week'
+          type='number'
+          value={ this.state.hoursPerWeek }
           onChange={ this.handleChange }
           />
 
         <input
-          name='password'
-          placeholder='password'
-          type='password'
+          name='salaryPerHour'
+          placeholder='salary-per-hour'
+          type='number'
+          value={ this.state.salaryPerHour }
+          onChange={ this.handleChange }
+          />
+
+        <input
+          name='pin'
+          placeholder='pin'
+          type='text'
           value={this.state.password}
           onChange={this.handleChange}
           />
@@ -160,4 +163,4 @@ class EmployeeForm extends React.Component {
   }
 }
 
-export default AuthForm;
+export default AuthForm
