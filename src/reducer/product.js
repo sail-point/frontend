@@ -44,7 +44,7 @@ export default (state=emptyState, {type, payload}) => {
       temp.data = tempArray
       return temp
     case 'TOKEN_REMOVE':
-      return null
+      return emptyState
     default:
       return state
   }
