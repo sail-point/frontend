@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import AdminForm from '../admin-form'
 import * as util from '../../lib/util.js'
-import * as auth from '../../action/store.js'
+import * as auth from '../../action/auth.js'
 
 class Landing extends React.Component {
   render(){
@@ -15,7 +15,7 @@ class Landing extends React.Component {
         {util.renderIf(location.pathname === '/signup',
           <div>
             <AdminForm onComplete={this.props.signup} />
-            <p> already have an account? </p>
+            <p> Already have an account? </p>
             <Link to='/login'> Login </Link>
           </div>
         )}
@@ -23,7 +23,7 @@ class Landing extends React.Component {
         {util.renderIf(location.pathname === '/login',
           <div>
             <AdminForm type='login' onComplete={this.props.login} />
-            <p> dont have an account ? </p>
+            <p> Dont have an account ? </p>
             <Link to='/signup'> Signup </Link>
           </div>
         )}
