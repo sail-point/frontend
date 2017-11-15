@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
 import token from './token.js'
-import businessEmployees from './business-employees.js'
+import employees from './employees.js'
 import products from './products.js'
-export default combineReducers({ token, businessEmployees, products })
+export default combineReducers({ token, employees, products })

@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import EmployeeItem from '../employee-item'
 import EmployeeForm from '../employee-form'
-import * as util from '../../lib/util.js'
-import * as businessEmployee from '../../action/business-employee.js'
+import * as employee from '../../action/employee.js'
 
 class Employee extends React.Component {
   constructor(props){
@@ -19,69 +19,39 @@ class Employee extends React.Component {
   handleCreate(employee){
     this.props.employeeCreate(employee)
     .then(() => {
-      this.props.history.push('/dashboard')
-    })
-  }
-
-  handleUpdate(employee){
-    this.props.employeeUpdate(employee)
-    this.setState({editing: false})
-  }
-
-  handleDelete(employee){
-    this.props.employeeDelete(employee)
-    .then(() => {
-      this.props.history.push('/dashboard')
+      this.props.history.push('/employee')
     })
   }
 
   render(){
     let {
-      employee,
+      employees,
       employeeCreate,
     } = this.props
 
     return (
       <div className='employee'>
         <h2> Employee </h2>
-        { employee ?
-          <div>
-              { this.state.editing ?
-              <div>
-                <EmployeeForm employee={employee} onComplete={this.handleUpdate} />
-                <button onClick={() => this.setState({editing: false})}>
-                  Cancel
-                </button>
-              </div>
-            :
-              <div>
-                <p>Name: {employee.firstName} {employee.lastName}</p>
-                <p>City: {employee.city} </p>
-                <p>State: {employee.state} </p>
-                <p>Donation Goal: {employee.donationGoal} </p>
-                <p>Money Spent: {employee.moneySpent} </p>
-                <p>Bio: {employee.bio} </p>
-                <button onClick={() => this.setState({editing: true})}>
-                  Edit Employee
-                </button>
-              </div>
-            }
-          </div>
-        :
-          <EmployeeForm onComplete={this.handleCreate} />
-        }
+        <EmployeeForm onComplete={employeeCreate} />
+        <div className='employee-container'>
+          {employees.map((employee, i) =>
+            <EmployeeItem
+              key={i}
+              employee={employee}
+            />
+          )}
+        </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  employee: state.businessEmployee,
+let mapStateToProps = (state) => ({
+  employees: state.employees,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  employeeCreate: (employee) => dispatch(businessEmployee.create(employee)),
-  employeeUpdate: (employee) => dispatch(businessEmployee.update(employee)),
+let mapDispatchToProps = (dispatch) => ({
+  employeeCreate: (data) => dispatch(employee.create(data)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Employee)

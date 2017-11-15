@@ -13,7 +13,7 @@ export default (state=[], {type, payload}) => {
       return [payload, ...state]
     case 'EMPLOYEES_SET':
       if(!Array.isArray(payload))
-        throw new Error('employees mush be an array')
+        throw new Error('employees must be an array')
       payload.forEach(validateEmployee)
       return payload
     case 'EMPLOYEE_UPDATE':

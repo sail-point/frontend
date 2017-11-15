@@ -9,21 +9,26 @@ let clearState = {
   lastName: '',
   lastNameDirty: false,
   lastNameError: 'Last Name is required',
+  title: '',
+  titleDirty: false,
+  titleError: 'Title is required',
   email: '',
   emailDirty: false,
   emailError: 'Email is required',
   phoneNumber: '',
-  phoneNumberDirty: false
-  phoneNumberError: 'Phone number is required'
+  phoneNumberDirty: false,
+  phoneNumberError: 'Phone number is required',
   hoursPerWeek: '',
   hoursPerWeekDirty: false,
-  hoursPerWeekError: 'Expected hours per week is required'
+  hoursPerWeekError: 'Expected hours per week is required',
   salaryPerHour: '',
   salaryPerHourDirty: false,
-  salaryPerHourError: 'Salary is required'
+  salaryPerHourError: 'Salary is required',
   pin: '',
   pinDirty: false,
-  pinError: 'pin is required',
+  pinError: 'Pin is required',
+  hired: '',
+  terminated: '',
   submitted: false,
 }
 
@@ -31,14 +36,12 @@ class EmployeeForm extends React.Component {
   constructor(props){
     super(props)
     this.state = clearState
-    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.validateChange = this.validateChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleValidate = this.handleValidate.bind(this)
   }
 
-  validateChange(name, value){
-    if(this.props.type === 'login')
-      return null
+  handleValidate(name, value){
     switch (name) {
       case 'firstName':
         if(!validator.isAlpha(value))
@@ -68,7 +71,7 @@ class EmployeeForm extends React.Component {
     this.setState({
       [name]: value,
       [`${ name }Dirty`]: true,
-      [`${ name }Error`]: this.validateChange(name, value),
+      [`${ name }Error`]: this.handleValidate(name, value),
     });
   };
 
