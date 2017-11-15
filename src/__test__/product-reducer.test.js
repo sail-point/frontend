@@ -1,4 +1,4 @@
-import reducer from '../src/reducer/product.js'
+import reducer from '../reducer/product.js'
 
 describe('Product reducer', () => {
 

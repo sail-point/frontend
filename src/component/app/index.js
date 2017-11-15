@@ -5,6 +5,7 @@ import Keypad from '../keypad'
 import Dashboard from '../dashboard'
 import Landing from '../landing'
 import Product from '../product'
+import Employee from '../employee'
 
 class App extends React.Component {
   componentWillMount(){
@@ -20,6 +21,7 @@ class App extends React.Component {
             <Route exact path='/signup' component={Landing} />
             <Route exact path='/login' component={Landing} />
             <Route exact path='/admin/product' component={Product} />
+            <Route exact path='/admin/employee' component={Employee} />
             <Route exact path='/employee/login' component={Keypad} />
             <Route exact path='/employee/dashboard' component={Dashboard} />
           </div>

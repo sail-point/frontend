@@ -2,43 +2,46 @@ import React from 'react'
 import * as util from '../../lib/util.js'
 import validator from 'validator'
 
-let clearState = {
+let emptyState = {
   firstName: '',
   firstNameDirty: false,
   firstNameError: 'First Name is required',
   lastName: '',
   lastNameDirty: false,
   lastNameError: 'Last Name is required',
+  title: '',
+  titleDirty: false,
+  titleError: 'Title is required',
   email: '',
   emailDirty: false,
   emailError: 'Email is required',
   phoneNumber: '',
-  phoneNumberDirty: false
-  phoneNumberError: 'Phone number is required'
+  phoneNumberDirty: false,
+  phoneNumberError: 'Phone number is required',
   hoursPerWeek: '',
   hoursPerWeekDirty: false,
-  hoursPerWeekError: 'Expected hours per week is required'
+  hoursPerWeekError: 'Expected hours per week is required',
   salaryPerHour: '',
   salaryPerHourDirty: false,
-  salaryPerHourError: 'Salary is required'
+  salaryPerHourError: 'Salary is required',
   pin: '',
   pinDirty: false,
-  pinError: 'pin is required',
+  pinError: 'Pin is required',
+  hired: '',
+  terminated: '',
   submitted: false,
 }
 
 class EmployeeForm extends React.Component {
   constructor(props){
     super(props)
-    this.state = clearState
-    this.handleChange = this.handleChange.bind(this)
+    this.state = this.props.employee || emptyState
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.validateChange = this.validateChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleValidate = this.handleValidate.bind(this)
   }
 
-  validateChange(name, value){
-    if(this.props.type === 'login')
-      return null
+  handleValidate(name, value){
     switch (name) {
       case 'firstName':
         if(!validator.isAlpha(value))
@@ -52,109 +55,148 @@ class EmployeeForm extends React.Component {
         if(!validator.isEmail(value))
           return 'you must provide a valid email'
         return null
-      case 'password':
-        if(value.length < 8)
-          return 'Password must be at least 8 characters long'
-        if(!validator.isAlphanumeric(value))
-          return 'Your password may only contain numbers and letters'
+      case 'phoneNumber':
+        if(!validator.isMobilePhone(value))
+          return 'you must provide a valid phone number'
+        return null
+      case 'hoursPerWeek':
+        if(!validator.isAlpha(value))
+          return 'You must provide hours per week'
+        return null
+      case 'salaryPerHour':
+        if(!validator.isAlpha(value))
+          return 'You must provide salary per hour'
+        return null
+      case 'pin':
+        if(value.length !== 8)
+          return 'Pin must be 4 characters long'
         return null
       default:
         return null
     }
   }
 
-  handleChange(event){
-    let { name, value } = event.target;
+  handleChange(e){
+    let {name, value, type} = e.target
+    value = type === 'number' ? Number(value) : value
     this.setState({
       [name]: value,
-      [`${ name }Dirty`]: true,
-      [`${ name }Error`]: this.validateChange(name, value),
-    });
-  };
+      [`${name}Dirty`]: true,
+      [`${name}Error`]: value ? null : emptyState[`${name}Error`],
+    })
+  }
 
-  handleSubmit(event){
-    event.preventDefault();
-    let { storeNameError, emailError, passwordError } = this.state
-    if(this.props.type === 'login' || !storeNameError && !emailError && !passwordError){
-      this.props.onComplete(this.state)
-      this.setState(emptyState)
-    } else {
-      this.setState({
-        storeNameDirty: true,
-        emailDirty: true,
-        addressDirty: true,
-        phoneDirty: true,
-        webiste: true,
-        passwordDirty: true,
-        submitted: true,
-      })
-    }
+  handleSubmit(e){
+    e.preventDefault()
+    this.props.onComplete(this.state)
+    this.setState(emptyState)
   }
 
 
   render(){
-    let { type } = this.props
-
-    type = type === 'login' ? type : 'signup';
-
+    let {
+      type,
+    } = this.props
+    let buttonText = this.props.employee ? 'update employee' : 'create employee'
     return (
       <form
-        className='admin-form'
-        noValidate
+        className='employee-form'
         onSubmit={ this.handleSubmit } >
 
+        <label> First Name </label>
         <input
-          name='storeName'
-          placeholder='Company Name'
           type='text'
-          value={ this.state.storeName }
+          name='firstName'
+          placeholder='first name'
+          value={ this.state.firstName }
           onChange={ this.handleChange }
           />
 
+        <label> Last Name </label>
         <input
+          type='text'
+          name='lastName'
+          placeholder='last name'
+          value={ this.state.lastName }
+          onChange={ this.handleChange }
+          />
+
+        <label> Title </label>
+        <input
+          type='text'
+          name='title'
+          placeholder='title'
+          value={ this.state.title }
+          onChange={ this.handleChange }
+          />
+
+        <label> Email </label>
+        <input
+          type='email'
           name='email'
           placeholder='email'
-          type='email'
           value={ this.state.email }
           onChange={ this.handleChange }
           />
-        <input
-          name='address'
-          placeholder='address'
-          type='text'// TODO: address input type??
-          value={ this.state.address }
-          onChange={ this.handleChange }
-        />
 
+        <label> Phone Number </label>
         <input
-          name='phone'
-          placeholder='phone'
-          type='text'// TODO: numerical or string?
-          value={ this.state.phone }
+          name='phoneNumber'
+          placeholder='phone number'
+          type='text'
+          value={ this.state.phoneNumber }
           onChange={ this.handleChange }
           />
 
+        <label> Hours Per Week </label>
         <input
-          name='webiste'
-          placeholder='website'
-          type='URL'// TODO: check input type
-          value={ this.state.city }
+          name='hoursPerWeek'
+          placeholder='hours'
+          type='number'
+          value={ this.state.hoursPerWeek }
           onChange={ this.handleChange }
           />
 
+        <label> Salary Per Hour </label>
         <input
-          name='password'
-          placeholder='password'
-          type='password'
-          value={this.state.password}
+          name='salaryPerHour'
+          placeholder='salary'
+          type='number'
+          value={ this.state.salaryPerHour }
+          onChange={ this.handleChange }
+          />
+
+        <label> Pin </label>
+        <input
+          name='pin'
+          placeholder='pin'
+          type='text'
+          value={this.state.pin}
           onChange={this.handleChange}
           />
 
-        <button type='submit'> { type } </button>
+        <label> Hired </label>
+        <input
+          name='hired'
+          placeholder='hired'
+          type='date'
+          value={this.state.hired}
+          onChange={this.handleChange}
+          />
 
+        <label> Terminated </label>
+        <input
+          name='terminated'
+          placeholder='terminated'
+          type='date'
+          value={this.state.terminated}
+          onChange={this.handleChange}
+          />
+
+        <button type='submit'> Submit </button>
       </form>
     )
   }
 }
 
-export default AuthForm;
+export default EmployeeForm
