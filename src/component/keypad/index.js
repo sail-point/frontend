@@ -1,6 +1,6 @@
 import './keypad.scss'
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import * as util from '../../lib/util.js'
 import * as keypad from '../../action/keypad.js'
 
@@ -8,8 +8,9 @@ let emptyState = {
   pin: null,
   pinCount: 0,
   pinDirty: false,
-  pinError: 'Incorrect PIN',
   pinClass: 'pinBox',
+  pinError: 'Incorrect PIN',
+  pinPrompt: 'Type your PIN',
 }
 
 class Keypad extends React.Component {
@@ -17,14 +18,13 @@ class Keypad extends React.Component {
     super(props)
 
     this.state = emptyState
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleClear = this.handleClear.bind(this)
   }
 
   handleClear(e) {
-    this.setState({pin: '', pinCount: 0})
-    // Dispatch action to reset pin
+    this.setState({ pin: '', pinCount: 0, pinDirty: false })
   }
 
   handleSubmit() {
@@ -35,19 +35,19 @@ class Keypad extends React.Component {
         this.props.history.push('/employee/dashboard')
       })
       .catch(() => {
-        this.setState({pin: '', pinCount: 0, pinDirty: true, pinClass: 'pinBox shaker'})
-        setTimeout(() => this.setState({pinClass: 'pinBox'}), 250)
+        this.setState({ pin: '', pinCount: 0, pinDirty: true, pinClass: 'pinBox shaker' })
+        setTimeout(() => this.setState({ pinClass: 'pinBox' }), 250)
       })
   }
 
   handleClick(e) {
     let number = e.target.name
-    number = number.charAt(number.length-1)
+    number = number.charAt(number.length - 1)
     this.setState(prevState => {
       let prevPin = ''
       if (prevState.pin)
         prevPin = prevState.pin
-      return {pin: prevPin + number, pinCount: prevState.pinCount+1}
+      return { pin: prevPin + number, pinCount: prevState.pinCount + 1 }
     }, () => {
 
       if (this.state.pinCount === 4)
@@ -55,20 +55,21 @@ class Keypad extends React.Component {
     })
   }
 
-  render(){
-    let {pinCount, pinDirty, pinError, pinClass} = this.state
+  render() {
     let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    let { pinCount, pinDirty, pinError, pinClass, pinPrompt } = this.state
     let pin = ['0', '1', '2', '3']
     let classText
     return (
       <div className='keypad'>
-        {util.renderIf(pinDirty, <p className='error'>{pinError}</p>)}
         <div className={pinClass}>
+          {util.renderIf(pinDirty, <p className='error'>{pinError}</p>)}
+          {util.renderIf(!pinDirty, <p className='pinPrompt'>{pinPrompt}</p>)}
           {pin.map((dot, i) => {
             classText = 'pinDot'
-            if (pinCount >= Number(i)+1)
+            if (pinCount >= Number(i) + 1)
               classText = 'pinDot shaded'
-            return <span className ={classText} key={i}>O</span>
+            return <span className={classText} key={i}></span>
           })}
         </div>
         <div className='numPad'>
@@ -81,7 +82,7 @@ class Keypad extends React.Component {
             </button>
           })}
         </div>
-        {util.renderIf(pinCount, <button onClick={this.handleClear}>Clear</button>)}
+        {util.renderIf(pinCount, <button className='buttonClear' onClick={this.handleClear}>Clear</button>)}
       </div>
     )
   }
