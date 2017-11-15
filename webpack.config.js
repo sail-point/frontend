@@ -11,13 +11,13 @@ const ExtractPlugin = require('extract-text-webpack-plugin')
 const production = process.env.NODE_ENV === 'production'
 
 let plugins = [
-  new HTMLPlugin({title: 'Lab Stuart'}),
+  new HTMLPlugin({title: 'Sail Point'}),
   new ExtractPlugin('bundle.[hash].css'),
   new DefinePlugin({
     __API_URL__: JSON.stringify(process.env.API_URL),
   }),
   new EnvironmentPlugin({
-    NODE_ENV: process.env.NODE_ENV
+    NODE_ENV: process.env.NODE_ENV,
   }),
 ]
 
@@ -61,7 +61,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: 'image/[name].[hash].[ext]'
+            name: 'image/[name].[hash].[ext]',
           },
         }],
       },

@@ -1,4 +1,3 @@
-import './_employee-item.scss'
 import React from 'react'
 import EmployeeForm from '../employee-form'
 import {connect} from 'react-redux'
