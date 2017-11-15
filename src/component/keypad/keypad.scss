@@ -37,8 +37,7 @@
       border: 1px solid $color-navy;
       border-radius: 50%;
       &.shaded {
-        background-color: $color-silver*2;
-        // border-color: $color-silver*2;
+        background-color: $color-silver*2; 
       }
     }
   }
@@ -53,7 +52,9 @@
       padding: 0;
       background-color: $color-silver;
       border-radius: 50%;
+      transition: background-color .5s;
       &:hover {
+        transition: background-color 0s;
         background-color: $color-silver*1.08;
       }
     }
