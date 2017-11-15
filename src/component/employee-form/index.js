@@ -103,6 +103,7 @@ class EmployeeForm extends React.Component {
         className='employee-form'
         onSubmit={ this.handleSubmit } >
 
+        <label> First Name </label>
         <input
           type='text'
           name='firstName'
@@ -111,6 +112,7 @@ class EmployeeForm extends React.Component {
           onChange={ this.handleChange }
           />
 
+        <label> Last Name </label>
         <input
           type='text'
           name='lastName'
@@ -119,6 +121,7 @@ class EmployeeForm extends React.Component {
           onChange={ this.handleChange }
           />
 
+        <label> Title </label>
         <input
           type='text'
           name='title'
@@ -127,6 +130,7 @@ class EmployeeForm extends React.Component {
           onChange={ this.handleChange }
           />
 
+        <label> Email </label>
         <input
           type='email'
           name='email'
@@ -135,6 +139,7 @@ class EmployeeForm extends React.Component {
           onChange={ this.handleChange }
           />
 
+        <label> Phone Number </label>
         <input
           name='phoneNumber'
           placeholder='phone number'
@@ -143,22 +148,25 @@ class EmployeeForm extends React.Component {
           onChange={ this.handleChange }
           />
 
+        <label> Hours Per Week </label>
         <input
           name='hoursPerWeek'
-          placeholder='hours-per-week'
+          placeholder='hours'
           type='number'
           value={ this.state.hoursPerWeek }
           onChange={ this.handleChange }
           />
 
+        <label> Salary Per Hour </label>
         <input
           name='salaryPerHour'
-          placeholder='salary-per-hour'
+          placeholder='salary'
           type='number'
           value={ this.state.salaryPerHour }
           onChange={ this.handleChange }
           />
 
+        <label> Pin </label>
         <input
           name='pin'
           placeholder='pin'
@@ -167,6 +175,7 @@ class EmployeeForm extends React.Component {
           onChange={this.handleChange}
           />
 
+        <label> Hired </label>
         <input
           name='hired'
           placeholder='hired'
@@ -175,6 +184,7 @@ class EmployeeForm extends React.Component {
           onChange={this.handleChange}
           />
 
+        <label> Terminated </label>
         <input
           name='terminated'
           placeholder='terminated'
