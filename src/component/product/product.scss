@@ -1,0 +1,27 @@
+@import 'vars';
+
+.product {
+  outline: 1px solid black;
+  padding: $pad;
+
+  .product-form {
+    outline: 1px solid black;
+    padding: $pad;
+  }
+
+  .product-item {
+    outline: 1px solid black;
+    padding: $pad;
+    margin-top: $margin;
+  }
+}
+
+.product > .product-form {
+  p {
+    text-align: left;
+  }
+  input[type='text'] {
+    max-width: 100%;
+    display: inline;
+  }
+}
