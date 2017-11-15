@@ -49,7 +49,7 @@ let mapStateToProps = (state) => ({
 })
 
 let mapDispatchToProps = (dispatch) => ({
-  employeeCreate: (data) => dispatch(employee.create(data)),
+  employeeCreate: (data) => dispatch(employee.createRequest(data)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Employee)

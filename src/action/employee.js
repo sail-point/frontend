@@ -30,6 +30,7 @@ export const fetchAll = () => (store) => {
 }
 
 export const createRequest = (employee) => (store) => {
+  console.log('employee: ', employee)
   let { token } = store.getState()
   return superagent.post(`${__API_URL__}/employees`)
   .set('Authorization', `Bearer ${ token }`)
@@ -39,6 +40,8 @@ export const createRequest = (employee) => (store) => {
 }
 
 export const updateRequest = (employee) => (store) => {
+  console.log('employee: ', employee)
+  console.log('store: ', store)
   let { token } = store.getState()
   return superagent.post(`${__API_URL__}/employees/${employee._id}`)
   .set('Authorization', `Bearer ${ token }`)
@@ -48,6 +51,8 @@ export const updateRequest = (employee) => (store) => {
 }
 
 export const destroyRequest = (employee) => (store) => {
+  console.log('employee: ', employee)
+  console.log('store: ', store)
   let {token} = store.getState()
   return superagent.delete(`${__API_URL__}/employees/${employee._id}`)
   .set('Authorization', `Bearer ${token}`)

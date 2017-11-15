@@ -9,11 +9,16 @@ class EmployeeItem extends React.Component {
     super(props)
     this.state = {editing: false}
     this.handleUpdate = this.handleUpdate.bind(this)
+    this.handleDestroy = this.handleDestroy.bind(this)
   }
 
   handleUpdate(employee){
     this.props.employeeUpdate(employee)
     this.setState({editing: false})
+  }
+
+  handleDestroy(employee){
+    this.props.employeeDestroy(employee)
   }
 
   render(){
@@ -53,9 +58,13 @@ class EmployeeItem extends React.Component {
   }
 }
 
-let mapDispatchToProps = (dispatch) => ({
-  employeeUpdate: (data) => dispatch(employee.update(data)),
-  employeeDestroy: (data) => dispatch(employee.destroy(data)),
+let mapStateToProps = (state) => ({
+  employees: state.employees,
 })
 
-export default connect(mapDispatchToProps)(EmployeeItem)
+let mapDispatchToProps = (dispatch) => ({
+  employeeUpdate: (data) => dispatch(employee.updateRequest(data)),
+  employeeDestroy: (data) => dispatch(employee.destroyRequest(data)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeItem)
