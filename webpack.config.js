@@ -11,7 +11,7 @@ const ExtractPlugin = require('extract-text-webpack-plugin')
 const production = process.env.NODE_ENV === 'production'
 
 let plugins = [
-  new HTMLPlugin({title: 'Lab Stuart'}),
+  new HTMLPlugin({title: 'Sail Point'}),
   new ExtractPlugin('bundle.[hash].css'),
   new DefinePlugin({
     __API_URL__: JSON.stringify(process.env.API_URL),
