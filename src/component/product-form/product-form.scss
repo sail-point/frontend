@@ -1,0 +1,17 @@
+@import 'vars';
+
+.product-form {
+  label {
+    width: auto;
+    display: inline;
+  }
+
+  input[type='checkbox'] {
+    left: .75em;
+    top: .75em;
+  }
+
+  button {
+    margin-top: $pad;
+  }
+}

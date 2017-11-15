@@ -15,6 +15,7 @@ const store = createStore(reducer, applyMiddleware(thunk, persist([]), reporter)
 console.log('INIT STATE', store.getState())
 
 let container = document.createElement('div')
+container.className = 'root'
 document.body.appendChild(container)
 
 ReactDom.render(
