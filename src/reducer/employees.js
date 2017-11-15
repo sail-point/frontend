@@ -6,7 +6,9 @@ export const validateEmployee = (employee) => {
     throw new Error('Employee requires a first name, last name, title, email, phone number, hours-per-week, and salary-per-hour')
 }
 
-export default (state=[], {type, payload}) => {
+let emptyState = []
+
+export default (state=emptyState, {type, payload}) => {
   switch(type){
     case 'EMPLOYEE_CREATE':
       validateEmployee(payload)
@@ -22,6 +24,8 @@ export default (state=[], {type, payload}) => {
     case 'EMPLOYEE_DESTROY':
       validateEmployee(payload)
       return state.filter(employee => employee._id !== payload.id)
+    case 'TOKEN_REMOVE':
+      return emptyState
     default:
       return state
   }
