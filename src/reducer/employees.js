@@ -19,7 +19,7 @@ export default (state=[], {type, payload}) => {
     case 'EMPLOYEE_UPDATE':
       validateEmployee(payload)
       return state.map(employee => employee._id === payload._id ? payload : employee)
-    case 'EMPLOYEE_REMOVE':
+    case 'EMPLOYEE_DESTROY':
       validateEmployee(payload)
       return state.filter(employee => employee._id !== payload.id)
     default:

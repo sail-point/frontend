@@ -35,7 +35,7 @@ let emptyState = {
 class EmployeeForm extends React.Component {
   constructor(props){
     super(props)
-    this.state = clearState
+    this.state = this.props.employee || emptyState
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleValidate = this.handleValidate.bind(this)
@@ -94,6 +94,9 @@ class EmployeeForm extends React.Component {
 
 
   render(){
+    let {
+      type,
+    } = this.props
     let buttonText = this.props.employee ? 'update employee' : 'create employee'
     return (
       <form
@@ -152,15 +155,14 @@ class EmployeeForm extends React.Component {
           name='pin'
           placeholder='pin'
           type='text'
-          value={this.state.password}
+          value={this.state.pin}
           onChange={this.handleChange}
           />
 
-        <button type='submit'> { type } </button>
-
+        <button type='submit'> {type} </button>
       </form>
     )
   }
 }
 
-export default AuthForm
+export default EmployeeForm

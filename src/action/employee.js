@@ -15,8 +15,8 @@ export const update = (employee) => ({
   payload: employee,
 })
 
-export const remove = (employee) => ({
-  type: 'EMPLOYEE_REMOVE',
+export const destroy = (employee) => ({
+  type: 'EMPLOYEE_DESTROY',
   payload: employee,
 })
 
@@ -47,11 +47,11 @@ export const updateRequest = (employee) => (store) => {
   })
 }
 
-export const removeRequest = (employee) => (store) => {
+export const destroyRequest = (employee) => (store) => {
   let {token} = store.getState()
   return superagent.delete(`${__API_URL__}/employees/${employee._id}`)
   .set('Authorization', `Bearer ${token}`)
   .then(res => {
-    return store.dispatch(remove(employee))
+    return store.dispatch(destroy(employee))
   })
 }
