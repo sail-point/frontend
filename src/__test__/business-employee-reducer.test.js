@@ -6,26 +6,23 @@ describe('businessEmployee reducer', () => {
     expect(state).toEqual([])
   })
 
-  // test('should set the profile', () => {
-  //   let action  = {
-  //     type: 'CLIENT_PROFILE_SET',
-  //     payload: {
-  //       username: 'usagi',
-  //       email: 'serenity@silvermillenuim.com',
-  //       firstName: 'Usagi',
-  //       lastName: 'Tsukino',
-  //       city: 'Seattle',
-  //       state: 'WA',
-  //       donationGoal: 200,
-  //       moneySpent: 100,
-  //       bio: 'In the name of the moon',
-  //       account: '535',
-  //     },
-  //   }
-  //   let state = reducer(undefined, action)
-  //   expect(state).toEqual(action.payload)
-  // })
-  //
+  test('should create the employee', () => {
+    let action  = {
+      type: 'EMPLOYEE_CREATE',
+      payload: {
+        firstName: 'yumi',
+        lastName: 'fukuzawa',
+        title: 'manager',
+        email: 'yumi@lillian.net',
+        phoneNumber: '206-453-2435',
+        hoursPerWeek: 30,
+        salaryPerHour: 20,
+      },
+    }
+    let state = reducer(undefined, action)
+    expect(state).toEqual(action.payload)
+  })
+
   // test('should fail with no payload', () => {
   //   let shouldFail = () => {
   //     reducer(undefined, {type: 'CLIENT_PROFILE_SET'})

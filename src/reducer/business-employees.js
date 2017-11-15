@@ -16,6 +16,9 @@ export default (state=[], {type, payload}) => {
     case 'EMPLOYEE_CREATE':
       validateEmployee(payload)
       return [payload, ...state]
+    case 'EMPLOYEE_UPDATE':
+      validateEmployee(payload)
+      return state.map(employee => employee._id === payload._id ? payload : employee)
     case 'EMPLOYEE_REMOVE':
       validateEmployee(payload)
       return state.filter(employee => employee._id !== payload.id)
