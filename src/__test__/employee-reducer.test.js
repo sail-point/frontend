@@ -1,4 +1,4 @@
-import reducer from '../reducer/business-employees.js'
+import reducer from '../reducer/employees.js'
 
 describe('businessEmployee reducer', () => {
   test('the intial state shuld be []', () => {
@@ -88,22 +88,5 @@ describe('businessEmployee reducer', () => {
       })
     }
     expect(shouldFail).toThrow('employees must be an array')
-  })
-
-  test.only('should update the employee', () => {
-    let action  = {
-      type: 'EMPLOYEE_CREATE',
-      payload: {
-        firstName: 'yumi',
-        lastName: 'fukuzawa',
-        title: 'manager',
-        email: 'yumi@lillian.net',
-        phoneNumber: '206-453-2435',
-        hoursPerWeek: 30,
-        salaryPerHour: 20,
-      },
-    }
-    let state = reducer(undefined, action)
-    expect(state).toEqual(action.payload)
   })
 })
