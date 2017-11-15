@@ -1,8 +1,9 @@
+import './product-item.scss'
 import React from 'react'
 import {connect} from 'react-redux'
 import ProductForm from '../product-form'
 import * as util from '../../lib/util.js'
-import * as Product from '../../action/product.js'
+import * as product from '../../action/product.js'
 
 class ProductItem extends React.Component {
   constructor(props){
@@ -11,12 +12,7 @@ class ProductItem extends React.Component {
       editing: false,
     }
 
-    this.handleDestroy = this.handleDestroy.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
-  }
-
-  handleDestroy(){
-    this.props.destroyProduct(this.props.product)
   }
 
   handleUpdate(product){
@@ -27,29 +23,26 @@ class ProductItem extends React.Component {
   render(){
     let {
       product,
-      productCreate,
+      destroyProduct,
     } = this.props
     return (
       <div className='product-item'>
         <div>
           { !this.state.editing ?
             <div>
-              <p>{product.name}</p>
-              <p>{product.price}</p>
-              <p>{product.category}</p>
-              <button onClick={this.handleDestroy}>Delete </button>
-              <p>
-                <button onClick={() => this.setState({editing: true})}>
-              edit product
-                </button>
-              </p>
+              <p><strong>Item:</strong> {product.name}</p>
+              <p><strong>Price:</strong> {product.price}</p>
+              <p><strong>Category:</strong> {product.category}</p>
+              <p><strong>Availability:</strong> {product.available ? <span style={{color: 'green'}}>In Stock</span> : <span style={{color: 'red'}}>Out of Stock</span> }</p>
+              <button className='delete' onClick={() => destroyProduct(product)}>Delete</button>
+              <button className='edit' onClick={() => this.setState({editing: true})}>Edit</button>
             </div>
             :
             <div>
               <ProductForm product={product} onComplete={this.handleUpdate} />
               <p>
                 <button onClick={() => this.setState({editing: false})}>
-                cancel
+                Cancel
                 </button>
               </p>
             </div>
@@ -60,11 +53,5 @@ class ProductItem extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-})
 
-const mapDispatchToProps = (dispatch) => ({
-  productCreate: (product) => dispatch(Product.create(product)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductItem)
+export default ProductItem

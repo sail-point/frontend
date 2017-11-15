@@ -1,0 +1,16 @@
+@import 'vars';
+
+.product-item {
+  p {
+    text: $font-mouse;
+  }
+  button {
+    margin-top: $pad;
+    &.edit {
+      
+    }
+    &.delete {
+      margin-right: $pad;
+    }
+  }
+}
