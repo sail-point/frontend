@@ -9,7 +9,7 @@ export const validateProduct = (product) => {
 export const validateProducts = (product) => {
   if(!product)
     throw new Error('products required')
-  if(!product.data || !product.count)
+  if(!product.data || product.count === undefined)
     throw new Error('__VALIDATION_ERROR__ invalid products')
 }
 
