@@ -6,6 +6,10 @@ import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
 
 class Landing extends React.Component {
+  componentWillMount(){
+    if(this.props.loggedIn)
+      this.props.history.push('/admin/product')
+  }
   render(){
     let {location} = this.props
     return (
@@ -14,7 +18,7 @@ class Landing extends React.Component {
 
         {util.renderIf(location.pathname === '/signup',
           <div>
-            <AdminForm onComplete={this.props.signup} />
+            <AdminForm onComplete={this.props.signup} history={this.props.history} />
             <p> Already have an account? </p>
             <Link to='/login'> Login </Link>
           </div>
@@ -22,7 +26,7 @@ class Landing extends React.Component {
 
         {util.renderIf(location.pathname === '/login',
           <div>
-            <AdminForm type='login' onComplete={this.props.login} />
+            <AdminForm type='login' onComplete={this.props.login} history={this.props.history} />
             <p> Dont have an account? </p>
             <Link to='/signup'> Signup </Link>
           </div>
