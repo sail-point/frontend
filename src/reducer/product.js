@@ -7,7 +7,6 @@ export const validateProduct = (product) => {
 }
 
 export const validateProducts = (product) => {
-  console.log('PRODUCT', product)
   if(!product)
     throw new Error('products required')
   if(!product.data || product.count === undefined)
