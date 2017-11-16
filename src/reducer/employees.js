@@ -1,9 +1,9 @@
 export const validateEmployee = (employee) => {
   if(!employee)
     throw new Error('Employee required')
-  let { firstName, lastName, title, email, phoneNumber, hoursPerWeek, salaryPerHour } = employee
-  if(!firstName || !lastName || !title || !email || !phoneNumber || !hoursPerWeek || !salaryPerHour )
-    throw new Error('Employee requires a first name, last name, title, email, phone number, hours-per-week, and salary-per-hour')
+  let { firstName, lastName, title, email, phoneNumber, hoursPerWeek, salaryPerHour, pin } = employee
+  if(!firstName || !lastName || !title || !email || !phoneNumber || !hoursPerWeek || !salaryPerHour|| !pin )
+    throw new Error('Employee requires a first name, last name, title, email, phone number, hours-per-week, salary-per-hour, and pin')
 }
 
 let emptyState = []
