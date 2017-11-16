@@ -1,10 +1,10 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import * as util from '../../lib/util.js'
+import Header from '../header'
 
 class Dashboard extends React.Component {
 
   render(){
+
     return (
       <div className='dashboard'>
         <h1> Employee Dashboard </h1>
@@ -13,9 +13,4 @@ class Dashboard extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  employee: state.employee,
-  token: state.token,
-})
-
-export default connect(mapStateToProps)(Dashboard)
+export default Dashboard

@@ -1,0 +1,14 @@
+@import 'vars';
+
+.product-view {
+  padding: $pad;
+
+  .title {
+    margin-bottom: $pad;
+    font-family: $font-mouse;
+  }
+
+  .product-item {
+    margin-bottom: $margin;
+  }
+}

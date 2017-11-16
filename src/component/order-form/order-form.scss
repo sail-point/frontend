@@ -1,0 +1,24 @@
+@import 'vars';
+
+.order-form {
+  outline: 2px solid black;
+  padding: $pad;
+
+  select {
+    border: 2px solid black;
+    width: 20em;
+    display: inline;
+    margin-right: $pad;
+  }
+
+  button {
+    padding: 1px;
+    padding: 0 .25em;
+    color: white;
+    background-color: green;
+  }
+
+  .submit-order{
+    display: block;
+  }
+}
