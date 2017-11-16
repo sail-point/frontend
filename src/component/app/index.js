@@ -5,14 +5,20 @@ import Keypad from '../keypad'
 import Dashboard from '../dashboard'
 import Landing from '../landing'
 import Product from '../product'
+import Order from '../order'
 import Employee from '../employee'
+import ProductView from '../product-view'
+import Header from '../header'
+import * as util from '../../lib/util.js'
 
 class App extends React.Component {
   componentWillMount(){
     let {loggedIn} = this.props
+    console.log('THE PROPS', this.props)
   }
 
   render(){
+    let {employee} = this.props
     return (
       <div className='app'>
         <BrowserRouter>
@@ -22,8 +28,17 @@ class App extends React.Component {
             <Route exact path='/login' component={Landing} />
             <Route exact path='/admin/product' component={Product} />
             <Route exact path='/admin/employee' component={Employee} />
-            <Route exact path='/employee/login' component={Keypad} />
-            <Route exact path='/employee/dashboard' component={Dashboard} />
+          </div>
+        </BrowserRouter>
+        <BrowserRouter>
+          <div>
+            {util.renderIf(employee,
+              <Header employee={employee} />
+            )}
+            <Route path='/employee/login' component={Keypad} />
+            <Route exact path='/employee/dashboard' render={(props) => (<Dashboard {...props} employee={employee} />)} />
+            <Route exact path='/employee/products' render={(props) => (<ProductView {...props} employee={employee} />)} />
+            <Route exact path='/employee/orders' render={(props) => (<Order {...props} employee={employee} />)} />
           </div>
         </BrowserRouter>
       </div>
@@ -33,6 +48,7 @@ class App extends React.Component {
 
 let mapStateToProps = (state) => ({
   loggedIn: !!state.token,
+  employee: state.employee,
 })
 
 let mapDispatchToProps = (dispatch) => ({
