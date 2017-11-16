@@ -73,7 +73,10 @@ class AdminForm extends React.Component {
   handleSubmit(event){
     event.preventDefault()
     let { storeNameError, emailError, passwordError } = this.state
-    if(this.props.type === 'login' || !storeNameError && !emailError && !passwordError){
+    if(this.props.type === 'signup' && !storeNameError && !emailError && !passwordError){
+      this.props.onComplete(this.state)
+      this.setState(emptyState)
+    } else if (this.props.type === 'login'){
       this.props.onComplete(this.state)
       this.setState(emptyState)
     } else {
@@ -126,7 +129,8 @@ class AdminForm extends React.Component {
             value={ this.state.email }
             onChange={ this.handleChange }
           />
-          <span className='warning'>*</span>
+          {util.renderIf(type === 'signup',
+            <span className='warning'>*</span>)}
           {util.renderIf(this.state.emailDirty,
             <label className='warning-label' htmlFor='email'>{ this.state.emailError }</label>)}
         </div>
@@ -176,7 +180,8 @@ class AdminForm extends React.Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <span className='warning'>*</span>
+          {util.renderIf(type === 'signup',
+            <span className='warning'>*</span>)}
           {util.renderIf(this.state.passwordDirty,
             <label className='warning-label' htmlFor='password'>{ this.state.passwordError }</label>)}
         </div>
