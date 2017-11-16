@@ -23,6 +23,7 @@ class OrderItem extends React.Component {
   render(){
     let {
       order,
+      products,
       closeOrder,
     } = this.props
     return (
@@ -43,7 +44,7 @@ class OrderItem extends React.Component {
             </div>
             :
             <div>
-              <OrderForm order={order} onComplete={this.handleUpdate} />
+              <OrderForm order={order} products={products} employee={order.employee} onComplete={this.handleUpdate} />
               <p>
                 <button onClick={() => this.setState({editing: false})}>
                 Cancel

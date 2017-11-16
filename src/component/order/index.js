@@ -69,6 +69,7 @@ class Order extends React.Component {
           <OrderItem
             key={i}
             order={item}
+            products={products}
             closeOrder={this.closeOrder}
             orderUpdate={this.orderUpdate}
           />
@@ -89,7 +90,7 @@ const mapDispatchToProps = (dispatch) => ({
   orderFetch: (data) => dispatch(order.create(data)),
   productFetch: () => dispatch(product.fetch()),
   close: (data) => dispatch(order.close(data)),
-  update: (data) => dispatch(order.update(data)),
+  update: (data) => dispatch(order.close(data)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Order)
