@@ -1,4 +1,4 @@
-import reducer from '../src/reducer/product.js'
+import reducer from '../reducer/product.js'
 
 describe('Product reducer', () => {
 
@@ -117,7 +117,6 @@ describe('Product reducer', () => {
       }
 
       let state = reducer(initialState, action)
-      console.log('STATE', state)
       expect(state.data.length).toBe(1)
       expect(state.count).toBe(1)
     })
