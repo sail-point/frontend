@@ -23,7 +23,7 @@ class Landing extends React.Component {
         {util.renderIf(location.pathname === '/login',
           <div>
             <AdminForm type='login' onComplete={this.props.login} />
-            <p> Dont have an account ? </p>
+            <p> Dont have an account? </p>
             <Link to='/signup'> Signup </Link>
           </div>
         )}
