@@ -11,6 +11,7 @@ class adminNav extends React.Component {
       <nav className='navbar'>
         <ul>
           <li><button onClick={this.props.logout}>logout</button></li>
+          <li><Link to='/employee/login'>Employee Login</Link></li>
         </ul>
       </nav>
     )
