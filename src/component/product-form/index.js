@@ -72,7 +72,7 @@ class ProductForm extends React.Component {
       <form
         className='product-form'
         onSubmit={this.handleSubmit}>
-        <p>
+        <div className='form-field'>
           <input
             type='text'
             id='name'
@@ -85,8 +85,8 @@ class ProductForm extends React.Component {
           {util.renderIf(this.state.nameDirty,
             <label style={{color: 'red'}} htmlFor='name'>{this.state.nameError}</label>
           )}
-        </p>
-        <p>
+        </div>
+        <div className='form-field'>
           <input
             type='text'
             id='category'
@@ -95,8 +95,8 @@ class ProductForm extends React.Component {
             onChange={this.handleChange}
             placeholder='Category'
           />
-        </p>
-        <p>
+        </div>
+        <div className='form-field'>
           <input
             type='number'
             id='price'
@@ -109,20 +109,20 @@ class ProductForm extends React.Component {
           {util.renderIf(this.state.priceDirty,
             <label style={{color: 'red'}} htmlFor='price'>{this.state.priceError}</label>
           )}
-        </p>
-
-        <label htmlFor='available'>Available</label>
-        <input
-          type='checkbox'
-          id='available'
-          name='available'
-          checked={this.state.available}
-          onChange={this.handleChange}
-        />
-
-        <p>
+        </div>
+        <div className='form-field'>
+          <label htmlFor='available'>Available</label>
+          <input
+            type='checkbox'
+            id='available'
+            name='available'
+            checked={this.state.available}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className='form-field'>
           <button type='submit'>{this.props.product ? 'Update' : 'Create'} </button>
-        </p>
+        </div>
       </form>
     )
   }

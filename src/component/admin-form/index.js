@@ -101,76 +101,88 @@ class AdminForm extends React.Component {
         onSubmit={ this.handleSubmit } >
 
         {util.renderIf(type !== 'login',
-          <input
-            name='storeName'
-            placeholder='Company Name'
-            type='text'
-            value={ this.state.storeName }
-            onChange={ this.handleChange }
-          />
+          <div className='form-field'>
+            <input
+              name='storeName'
+              placeholder='Company Name'
+              type='text'
+              value={ this.state.storeName }
+              onChange={ this.handleChange }
+            />
+          </div>
         )}
 
         {util.renderIf(this.state.emailDirty,
           <p> { this.state.emailError } </p>)}
-        <input
-          name='email'
-          placeholder='email'
-          type='email'
-          value={ this.state.email }
-          onChange={ this.handleChange }
-        />
+        <div className='form-field'>
+          <input
+            name='email'
+            placeholder='email'
+            type='email'
+            value={ this.state.email }
+            onChange={ this.handleChange }
+          />
+        </div>
 
         {util.renderIf(this.state.addressDirty,
           <p> { this.state.addressError } </p>)}
 
         {util.renderIf(type !== 'login',
-          <input
-            name='address'
-            placeholder='address'
-            type='text'
-            value={ this.state.address }
-            onChange={ this.handleChange }
-          />
+          <div className='form-field'>
+            <input
+              name='address'
+              placeholder='address'
+              type='text'
+              value={ this.state.address }
+              onChange={ this.handleChange }
+            />
+          </div>
         )}
 
         {util.renderIf(this.state.phoneDirty,
           <p> { this.state.phoneError } </p>)}
 
         {util.renderIf(type !== 'login',
-          <input
-            name='phone'
-            placeholder='phone ex:2065554208'
-            type='tel'
-            value={ this.state.phone }
-            onChange={ this.handleChange }
-          />
+          <div className='form-field'>
+            <input
+              name='phone'
+              placeholder='phone ex:2065554208'
+              type='tel'
+              value={ this.state.phone }
+              onChange={ this.handleChange }
+            />
+          </div>
         )}
 
         {util.renderIf(this.state.websiteDirty,
           <p> { this.state.websiteError } </p>)}
 
         {util.renderIf(type !== 'login',
-          <input
-            name='website'
-            placeholder='website'
-            type='URL'
-            value={ this.state.city }
-            onChange={ this.handleChange }
-          />
+          <div className='form-field'>
+            <input
+              name='website'
+              placeholder='website'
+              type='URL'
+              value={ this.state.city }
+              onChange={ this.handleChange }
+            />
+          </div>
         )}
 
         {util.renderIf(this.state.passwordDirty,
           <p> { this.state.passwordError } </p>)}
-
-        <input
-          name='password'
-          placeholder='password'
-          type='password'
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-
-        <button type='submit'> { type } </button>
+        <div className='form-field'>
+          <input
+            name='password'
+            placeholder='password'
+            type='password'
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className='form-field'>
+          <button type='submit'> { type } </button>
+        </div>
 
       </form>
     )

@@ -20,6 +20,11 @@ h2 {font-size: 2.25em;}
 h3 {font-size: 2em;}
 h4 {font-size: 1.75em;}
 
+h1,h2,h3,h4,p,ul,form {
+  margin-bottom: .5em;
+  line-height: normal;
+}
+
 a {
   text-decoration: underline;
   font-family: sans-serif;
@@ -39,55 +44,27 @@ button {
   padding: 0.25em;
   cursor: pointer;
   border: 1px solid black;
+  width: 15em;
 }
 
 form {
+  .form-field {
+    width: 50%;
+    max-width: 15em;
+    margin: 0 .5em .5em 0;
+    display: inline-block;
+    @media (max-width: 959px) {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 0 .5em;
+    }
+  }
   input {
-    margin: 0 1em .5em 0;
-  }
-
-  input[type='text'] {
     border: 2px solid black;
     display: inline;
-    width: 50%;
-    max-width: 15em;
     padding-left: $pad;
-    padding-top: .1em;
-    padding-bottom: .1em;
-    border-color: $color-orange;
-    -webkit-transition: border-radius .25s;
-    transition: border-radius .25s;
-    &:focus {
-      border-radius: .5em;
-      border-color: $color-green;
-    }
-  }
-
-  input[type='email'] {
-    border: 2px solid black;
-    display: inline;
-    width: 50%;
-    max-width: 15em;
-    padding-left: $pad;
-    padding-top: .1em;
-    padding-bottom: .1em;
-    border-color: $color-orange;
-    -webkit-transition: border-radius .25s;
-    transition: border-radius .25s;
-    &:focus {
-      border-radius: .5em;
-      border-color: $color-green;
-    }
-  }
-
-  input[type='password'] {
-    border: 2px solid black;
-    display: inline;
-    width: 50%;
-    max-width: 15em;
-    padding-left: $pad;
-    padding-top: .1em;
-    padding-bottom: .1em;
+    padding-top: .2em;
+    padding-bottom: .2em;
     border-color: $color-orange;
     -webkit-transition: border-radius .25s;
     transition: border-radius .25s;
