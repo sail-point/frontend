@@ -9,20 +9,24 @@ import Order from '../order'
 import Employee from '../employee'
 import ProductView from '../product-view'
 import Header from '../header'
+import AdminNav from '../admin-nav'
 import * as util from '../../lib/util.js'
 
 class App extends React.Component {
   componentWillMount(){
-    let {loggedIn} = this.props
     console.log('THE PROPS', this.props)
   }
 
   render(){
+    let {loggedIn} = this.props
     let {employee} = this.props
     return (
       <div className='app'>
         <BrowserRouter>
           <div>
+            {util.renderIf(loggedIn,
+              <AdminNav />
+            )}
             <Route exact path='/' component={Landing} />
             <Route exact path='/signup' component={Landing} />
             <Route exact path='/login' component={Landing} />
