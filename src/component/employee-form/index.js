@@ -46,25 +46,25 @@ class EmployeeForm extends React.Component {
       case 'firstName':
         if(!validator.isAlpha(value))
           return 'You must provide an employee first name'
-        return null
+        return ''
       case 'lastName':
         if(!validator.isAlpha(value))
           return 'You must provide an employee last name'
-        return null
+        return ''
       case 'email':
         if(!validator.isEmail(value))
           return 'you must provide a valid email'
-        return null
+        return ''
       case 'phoneNumber':
         if(validator.isAlpha(value) || value.length !== 10)
           return 'you must provide a valid phone number'
-        return null
+        return ''
       case 'pin':
         if(value.length !== 4)
           return 'Pin must be 4 characters long'
-        return null
+        return ''
       default:
-        return null
+        return ''
     }
   }
 
