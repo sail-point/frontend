@@ -180,7 +180,7 @@ class AdminForm extends React.Component {
             onChange={this.handleChange}
           />
         </div>
-        <div className='form-field'>
+        <div className='form-field button'>
           <button type='submit'> { type } </button>
         </div>
 

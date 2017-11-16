@@ -81,7 +81,7 @@ class ProductForm extends React.Component {
             onChange={this.handleChange}
             placeholder='Name'
           />
-          <span style={{fontSize: '1.2em', color: 'red'}}>* </span>
+          <span className='warning'>*</span>
           {util.renderIf(this.state.nameDirty,
             <label style={{color: 'red'}} htmlFor='name'>{this.state.nameError}</label>
           )}
@@ -105,7 +105,7 @@ class ProductForm extends React.Component {
             onChange={this.handleChange}
             placeholder='Price'
           />
-          <span style={{fontSize: '1.2em', color: 'red'}}>* </span>
+          <span className='warning'>*</span>
           {util.renderIf(this.state.priceDirty,
             <label style={{color: 'red'}} htmlFor='price'>{this.state.priceError}</label>
           )}
@@ -120,7 +120,7 @@ class ProductForm extends React.Component {
             onChange={this.handleChange}
           />
         </div>
-        <div className='form-field'>
+        <div className='form-field button'>
           <button type='submit'>{this.props.product ? 'Update' : 'Create'} </button>
         </div>
       </form>
