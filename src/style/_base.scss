@@ -21,7 +21,7 @@ h3 {font-size: 2em;}
 h4 {font-size: 1.75em;}
 
 h1,h2,h3,h4,p,ul,form {
-  margin-bottom: $margin;
+  margin-bottom: $less-margin;
   line-height: normal;
 }
 
@@ -45,6 +45,7 @@ button {
   cursor: pointer;
   border: 1px solid black;
   width: 15em;
+  text-transform: capitalize;
 }
 
 form {
@@ -59,16 +60,20 @@ form {
       max-width: 100%;
       margin: 0 0 $margin;
     }
-    &.button {
+    &.button, &.date {
       display: block;
     }
   }
-  .warning {
-    font-size: 1.2em;
+  .warning, .warning-label {
+    font-size: .85em;
     color: red;
     position: absolute;
     top: -16px;
     left: 0;
+  }
+  .warning-label {
+    left: 10px;
+    top: -18px;
   }
   input {
     border: 2px solid black;
@@ -76,23 +81,6 @@ form {
     padding-left: $pad;
     padding-top: .2em;
     padding-bottom: .2em;
-    border-color: $color-orange;
-    -webkit-transition: border-radius .25s;
-    transition: border-radius .25s;
-    &:focus {
-      border-radius: .5em;
-      border-color: $color-green;
-    }
-  }
-
-  input[type='number'] {
-    border: 2px solid black;
-    width: 30%;
-    max-width: 5em;
-    padding-left: $pad;
-    padding-top: .1em;
-    padding-bottom: .1em;
-    display: inline;
     border-color: $color-orange;
     -webkit-transition: border-radius .25s;
     transition: border-radius .25s;

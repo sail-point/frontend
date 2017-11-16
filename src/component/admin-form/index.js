@@ -117,7 +117,7 @@ class AdminForm extends React.Component {
         <div className='form-field'>
           <input
             name='email'
-            placeholder='email'
+            placeholder='Email'
             type='email'
             value={ this.state.email }
             onChange={ this.handleChange }
@@ -131,7 +131,7 @@ class AdminForm extends React.Component {
           <div className='form-field'>
             <input
               name='address'
-              placeholder='address'
+              placeholder='Address'
               type='text'
               value={ this.state.address }
               onChange={ this.handleChange }
@@ -146,7 +146,7 @@ class AdminForm extends React.Component {
           <div className='form-field'>
             <input
               name='phone'
-              placeholder='phone ex:2065554208'
+              placeholder='Phone ex:2065554208'
               type='tel'
               value={ this.state.phone }
               onChange={ this.handleChange }
@@ -161,7 +161,7 @@ class AdminForm extends React.Component {
           <div className='form-field'>
             <input
               name='website'
-              placeholder='website'
+              placeholder='Website'
               type='URL'
               value={ this.state.city }
               onChange={ this.handleChange }
@@ -174,7 +174,7 @@ class AdminForm extends React.Component {
         <div className='form-field'>
           <input
             name='password'
-            placeholder='password'
+            placeholder='Password'
             type='password'
             value={this.state.password}
             onChange={this.handleChange}

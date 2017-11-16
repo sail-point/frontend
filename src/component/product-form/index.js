@@ -83,7 +83,7 @@ class ProductForm extends React.Component {
           />
           <span className='warning'>*</span>
           {util.renderIf(this.state.nameDirty,
-            <label style={{color: 'red'}} htmlFor='name'>{this.state.nameError}</label>
+            <label className='warning-label' htmlFor='name'>{this.state.nameError}</label>
           )}
         </div>
         <div className='form-field'>
@@ -107,7 +107,7 @@ class ProductForm extends React.Component {
           />
           <span className='warning'>*</span>
           {util.renderIf(this.state.priceDirty,
-            <label style={{color: 'red'}} htmlFor='price'>{this.state.priceError}</label>
+            <label className='warning-label' htmlFor='price'>{this.state.priceError}</label>
           )}
         </div>
         <div className='form-field'>
