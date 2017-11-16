@@ -73,7 +73,7 @@ class AdminForm extends React.Component {
   handleSubmit(event){
     event.preventDefault()
     let { storeNameError, emailError, passwordError } = this.state
-    if(this.props.type === 'signup' && !storeNameError && !emailError && !passwordError){
+    if(this.props.type !== 'login' && !storeNameError && !emailError && !passwordError){
       this.props.onComplete(this.state)
       this.setState(emptyState)
     } else if (this.props.type === 'login'){
