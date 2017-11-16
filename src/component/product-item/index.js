@@ -34,8 +34,12 @@ class ProductItem extends React.Component {
               <p><strong>Price:</strong> {product.price}</p>
               <p><strong>Category:</strong> {product.category}</p>
               <p><strong>Availability:</strong> {product.available ? <span style={{color: 'green'}}>In Stock</span> : <span style={{color: 'red'}}>Out of Stock</span> }</p>
-              <button className='delete' onClick={() => destroyProduct(product)}>Delete</button>
-              <button className='edit' onClick={() => this.setState({editing: true})}>Edit</button>
+              {util.renderIf(destroyProduct,
+                <div>
+                  <button className='delete' onClick={() => destroyProduct(product)}>Delete</button>
+                  <button className='edit' onClick={() => this.setState({editing: true})}>Edit</button>
+                </div>
+              )}
             </div>
             :
             <div>

@@ -102,97 +102,103 @@ class EmployeeForm extends React.Component {
         className='employee-form'
         onSubmit={ this.handleSubmit } >
 
-        <label> First Name </label>
-        <input
-          type='text'
-          name='firstName'
-          placeholder='first name'
-          value={ this.state.firstName }
-          onChange={ this.handleChange }
+        <div className='form-field'>
+          <input
+            type='text'
+            name='firstName'
+            placeholder='First Name'
+            value={ this.state.firstName }
+            onChange={ this.handleChange }
           />
-
-        <label> Last Name </label>
-        <input
-          type='text'
-          name='lastName'
-          placeholder='last name'
-          value={ this.state.lastName }
-          onChange={ this.handleChange }
+        </div>
+        <div className='form-field'>
+          <input
+            type='text'
+            name='lastName'
+            placeholder='Last Name'
+            value={ this.state.lastName }
+            onChange={ this.handleChange }
           />
-
-        <label> Title </label>
-        <input
-          type='text'
-          name='title'
-          placeholder='title'
-          value={ this.state.title }
-          onChange={ this.handleChange }
+        </div>
+        <div className='form-field'>
+          <input
+            type='text'
+            name='title'
+            placeholder='Title'
+            value={ this.state.title }
+            onChange={ this.handleChange }
           />
-
-        <label> Email </label>
-        <input
-          type='email'
-          name='email'
-          placeholder='email'
-          value={ this.state.email }
-          onChange={ this.handleChange }
+        </div>
+        <div className='form-field'>
+          <input
+            type='email'
+            name='email'
+            placeholder='Email'
+            value={ this.state.email }
+            onChange={ this.handleChange }
           />
-
-        <label> Phone Number </label>
-        <input
-          name='phoneNumber'
-          placeholder='phone number'
-          type='text'
-          value={ this.state.phoneNumber }
-          onChange={ this.handleChange }
+        </div>
+        <div className='form-field'>
+          <input
+            name='phoneNumber'
+            placeholder='Phone Number'
+            type='text'
+            value={ this.state.phoneNumber }
+            onChange={ this.handleChange }
           />
-
-        <label> Hours Per Week </label>
-        <input
-          name='hoursPerWeek'
-          placeholder='hours'
-          type='number'
-          value={ this.state.hoursPerWeek }
-          onChange={ this.handleChange }
+        </div>
+        <div className='form-field'>
+          <input
+            name='hoursPerWeek'
+            placeholder='Hours per Week'
+            type='number'
+            value={ this.state.hoursPerWeek }
+            onChange={ this.handleChange }
           />
-
-        <label> Salary Per Hour </label>
-        <input
-          name='salaryPerHour'
-          placeholder='salary'
-          type='number'
-          value={ this.state.salaryPerHour }
-          onChange={ this.handleChange }
+        </div>
+        <div className='form-field'>
+          <input
+            name='salaryPerHour'
+            placeholder='Salary per Hour'
+            type='number'
+            value={ this.state.salaryPerHour }
+            onChange={ this.handleChange }
           />
-
-        <label> Pin </label>
-        <input
-          name='pin'
-          placeholder='pin'
-          type='text'
-          value={this.state.pin}
-          onChange={this.handleChange}
+        </div>
+        <div className='form-field'>
+          <input
+            name='pin'
+            placeholder='Pin'
+            type='text'
+            value={this.state.pin}
+            onChange={this.handleChange}
           />
-
-        <label> Hired </label>
-        <input
-          name='hired'
-          placeholder='hired'
-          type='date'
-          value={this.state.hired}
-          onChange={this.handleChange}
+        </div>
+        <div className='form-field date'>
+          <label htmlFor='hired'>Date Hired</label>
+          <input
+            id='hired'
+            name='hired'
+            placeholder='Hired'
+            type='date'
+            value={this.state.hired}
+            onChange={this.handleChange}
           />
-
-        <label> Terminated </label>
-        <input
-          name='terminated'
-          placeholder='terminated'
-          type='date'
-          value={this.state.terminated}
-          onChange={this.handleChange}
+        </div>
+        <div className='form-field date'>
+          <label htmlFor='terminated'>Date Terminated</label>
+          <input
+            id='terminated'
+            name='terminated'
+            placeholder='Terminated'
+            type='date'
+            value={this.state.terminated}
+            onChange={this.handleChange}
           />
-
-        <button type='submit'> Submit </button>
+        </div>
+        <div className='form-field button'>
+          <button type='submit'> Submit </button>
+        </div>
       </form>
     )
   }

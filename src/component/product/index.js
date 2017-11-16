@@ -44,6 +44,7 @@ class Product extends React.Component {
 
   render(){
     let {
+      products,
       removeProduct,
       updateProduct,
     } = this.props
@@ -52,7 +53,7 @@ class Product extends React.Component {
       <div className='product'>
         <h1> Products </h1>
         <ProductForm onComplete={this.updateComponent}/>
-        {this.props.products.data.map((item, i) =>
+        {products.data.map((item, i) =>
           <ProductItem
             key={i}
             product={item}

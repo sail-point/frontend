@@ -16,9 +16,9 @@ class Employee extends React.Component {
 
   handleCreate(employee){
     this.props.employeeCreate(employee)
-    .then(() => {
-      this.props.history.push('/admin/employee')
-    })
+      .then(() => {
+        this.props.history.push('/admin/employee')
+      })
   }
 
   render(){
@@ -29,7 +29,7 @@ class Employee extends React.Component {
 
     return (
       <div className='employee'>
-        <h2> Employee </h2>
+        <h2> Employees </h2>
         <EmployeeForm onComplete={employeeCreate} />
         <div className='employee-container'>
           {employees.map((employee, i) =>
