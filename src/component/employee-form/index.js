@@ -36,7 +36,6 @@ class EmployeeForm extends React.Component {
   constructor(props){
     super(props)
     this.state = this.props.employee || emptyState
-    console.log('this.state: ', this.state)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleValidate = this.handleValidate.bind(this)
@@ -98,7 +97,6 @@ class EmployeeForm extends React.Component {
     let {
       type,
     } = this.props
-    let buttonText = this.props.employee ? 'update employee' : 'create employee'
     return (
       <form
         className='employee-form'
