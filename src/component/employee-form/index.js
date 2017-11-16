@@ -59,14 +59,6 @@ class EmployeeForm extends React.Component {
         if(validator.isAlpha(value) || value.length !== 10)
           return 'you must provide a valid phone number'
         return ''
-      case 'hoursPerWeek':
-        if(!value.length)
-          return 'you must provide hours-per-week'
-        return ''
-      case 'salaryPerHour':
-        if(!value.length)
-          return 'you must provide salary-per-hour'
-        return ''
       case 'pin':
         if(value.length !== 4)
           return 'Pin must be 4 characters long'
