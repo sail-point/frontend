@@ -43,30 +43,22 @@ class EmployeeForm extends React.Component {
 
   handleValidate(name, value){
     switch (name) {
-      // case 'firstName':
-      //   if(!validator.isAlpha(value))
-      //     return 'You must provide an employee first name'
-      //   return null
-      // case 'lastName':
-      //   if(!validator.isAlpha(value))
-      //     return 'You must provide an employee last name'
-      //   return null
-      // case 'email':
-      //   if(!validator.isEmail(value))
-      //     return 'you must provide a valid email'
-      //   return null
-      // case 'phoneNumber':
-      //   if(!validator.isMobilePhone(value))
-      //     return 'you must provide a valid phone number'
-      //   return null
-      // case 'hoursPerWeek':
-      //   if(!validator.isInt(value))
-      //     return 'You must provide hours per week'
-      //   return null
-      // case 'salaryPerHour':
-      //   if(!validator.isInt(value))
-      //     return 'You must provide salary per hour'
-      //   return null
+      case 'firstName':
+        if(!validator.isAlpha(value))
+          return 'You must provide an employee first name'
+        return null
+      case 'lastName':
+        if(!validator.isAlpha(value))
+          return 'You must provide an employee last name'
+        return null
+      case 'email':
+        if(!validator.isEmail(value))
+          return 'you must provide a valid email'
+        return null
+      case 'phoneNumber':
+        if(validator.isAlpha(value) || value.length !== 10)
+          return 'you must provide a valid phone number'
+        return null
       case 'pin':
         if(value.length !== 4)
           return 'Pin must be 4 characters long'
@@ -82,7 +74,7 @@ class EmployeeForm extends React.Component {
     this.setState({
       [name]: value,
       [`${name}Dirty`]: true,
-      [`${name}Error`]: this.handleValidate(e.target),
+      [`${name}Error`]: this.handleValidate(name, value),
     })
   }
 
@@ -103,6 +95,7 @@ class EmployeeForm extends React.Component {
         onSubmit={ this.handleSubmit } >
 
         <div className='form-field'>
+          <p>{this.state.firstNameError}</p>
           <input
             type='text'
             name='firstName'
@@ -112,6 +105,7 @@ class EmployeeForm extends React.Component {
           />
         </div>
         <div className='form-field'>
+          <p>{this.state.lastNameError}</p>
           <input
             type='text'
             name='lastName'
@@ -121,6 +115,7 @@ class EmployeeForm extends React.Component {
           />
         </div>
         <div className='form-field'>
+          <p>{this.state.titleError}</p>
           <input
             type='text'
             name='title'
@@ -130,6 +125,7 @@ class EmployeeForm extends React.Component {
           />
         </div>
         <div className='form-field'>
+          <p>{this.state.emailError}</p>
           <input
             type='email'
             name='email'
@@ -139,6 +135,7 @@ class EmployeeForm extends React.Component {
           />
         </div>
         <div className='form-field'>
+          <p>{this.state.phoneNumberError}</p>
           <input
             name='phoneNumber'
             placeholder='Phone Number'
@@ -148,6 +145,7 @@ class EmployeeForm extends React.Component {
           />
         </div>
         <div className='form-field'>
+          <p>{this.state.hoursPerWeekError}</p>
           <input
             name='hoursPerWeek'
             placeholder='Hours per Week'
@@ -157,6 +155,7 @@ class EmployeeForm extends React.Component {
           />
         </div>
         <div className='form-field'>
+          <p>{this.state.salaryPerHourError}</p>
           <input
             name='salaryPerHour'
             placeholder='Salary per Hour'
@@ -166,6 +165,7 @@ class EmployeeForm extends React.Component {
           />
         </div>
         <div className='form-field'>
+          <p>{this.state.pinError}</p>
           <input
             name='pin'
             placeholder='Pin'

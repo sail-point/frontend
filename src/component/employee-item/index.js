@@ -19,6 +19,7 @@ class EmployeeItem extends React.Component {
 
   handleDestroy(employee){
     this.props.employeeDestroy(employee)
+    this.props.employeeUpdate(employee)
   }
 
   render(){
