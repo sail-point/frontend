@@ -1,6 +1,6 @@
 import { rehydrateCookie } from '../lib/redux-persist.js'
 
-let initialState = rehydrateCookie('X-SailPoint-token', null)
+let initialState = rehydrateCookie('X-SailPoint-Token', null)
 
 export default (state=initialState, {type, payload}) => {
   switch(type){

@@ -24,5 +24,7 @@ export const rehydrateLocalStorage = (key, intialState) => {
 }
 
 export const rehydrateCookie = (key, intialState) => {
-  return cookieFetch(key) || intialState
+  let result = cookieFetch(key) || intialState
+  console.log('HMMMM', result)
+  return result
 }

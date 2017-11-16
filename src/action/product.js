@@ -22,6 +22,7 @@ export const change = (product) => ({
 
 export const create = (product) => (store) => {
   let {token} = store.getState()
+  console.log(token)
   return superagent.post(`${__API_URL__}/products`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
