@@ -5,7 +5,6 @@ import validator from 'validator'
 let emptyState = {
   storeName: '',
   storeNameDirty: false,
-  storeNameError: '',
   email: '',
   emailDirty: false,
   emailError: '',
@@ -36,10 +35,6 @@ class AdminForm extends React.Component {
     if(this.props.type === 'login')
       return null
     switch (name) {
-      case 'storeName':
-        if(!validator.isAlpha(value))
-          return 'You must provide a company name'
-        return null
       case 'email':
         if(!validator.isEmail(value))
           return 'you must provide a valid email'
@@ -105,29 +100,25 @@ class AdminForm extends React.Component {
         noValidate
         onSubmit={ this.handleSubmit } >
 
-        {util.renderIf(this.state.storeNameDirty,
-          <p> { this.state.storeNameError } </p>)}
-
-        <input
-          name='storeName'
-          placeholder='Company Name'
-          type='text'
-          value={ this.state.storeName }
-          onChange={ this.handleChange }
-        />
-
-        {util.renderIf(this.state.emailDirty,
-          <p> { this.state.emailError } </p>)}
-
         {util.renderIf(type !== 'login',
           <input
-            name='email'
-            placeholder='email'
-            type='email'
-            value={ this.state.email }
+            name='storeName'
+            placeholder='Company Name'
+            type='text'
+            value={ this.state.storeName }
             onChange={ this.handleChange }
           />
         )}
+
+        {util.renderIf(this.state.emailDirty,
+          <p> { this.state.emailError } </p>)}
+        <input
+          name='email'
+          placeholder='email'
+          type='email'
+          value={ this.state.email }
+          onChange={ this.handleChange }
+        />
 
         {util.renderIf(this.state.addressDirty,
           <p> { this.state.addressError } </p>)}
