@@ -25,7 +25,7 @@ export const cookieFetchAll = () => {
 }
 
 export const cookieFetch = (key) => {
-  //return cookieFetchAll()[key]
+  return cookieFetchAll()[key]
 }
 
 export const cookieDelete = (key) => {
