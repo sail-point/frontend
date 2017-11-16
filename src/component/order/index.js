@@ -47,6 +47,9 @@ class Order extends React.Component {
   componentWillMount() {
     this.props.productFetch()
       .then(() => {
+        this.props.orderFetch()
+      })
+      .then(() => {
         this.forceUpdate()
       })
   }
@@ -87,7 +90,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   submit: (data) => dispatch(order.create(data)),
-  orderFetch: (data) => dispatch(order.create(data)),
+  orderFetch: () => dispatch(order.fetch()),
   productFetch: () => dispatch(product.fetch()),
   close: (data) => dispatch(order.close(data)),
   update: (data) => dispatch(order.close(data)),
