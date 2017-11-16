@@ -17,6 +17,7 @@ describe('businessEmployee reducer', () => {
         phoneNumber: '206-453-2435',
         hoursPerWeek: 30,
         salaryPerHour: 20,
+        pin: '3436',
       },
     }
     let state = reducer(undefined, action)
@@ -37,7 +38,7 @@ describe('businessEmployee reducer', () => {
         payload: {},
       })
     }
-    expect(shouldFail).toThrow('Employee requires a first name, last name, title, email, phone number, hours-per-week, and salary-per-hour')
+    expect(shouldFail).toThrow('Employee requires a first name, last name, title, email, phone number, hours-per-week, salary-per-hour, and pin')
   })
 
   test('should return the state', () => {
@@ -57,6 +58,7 @@ describe('businessEmployee reducer', () => {
           phoneNumber: '206-453-2435',
           hoursPerWeek: 30,
           salaryPerHour: 20,
+          pin: '3534',
         },
         {
           firstName: 'sachiko',
@@ -66,6 +68,7 @@ describe('businessEmployee reducer', () => {
           phoneNumber: '206-453-2436',
           hoursPerWeek: 30,
           salaryPerHour: 25,
+          pin: '3343',
         },
       ],
     }
