@@ -52,13 +52,13 @@ form {
   .form-field {
     width: 50%;
     max-width: 15em;
-    margin: 0 $margin $margin 0;
+    margin: 0 $margin $more-margin 0;
     display: inline-block;
     position: relative;
     @media (max-width: 959px) {
       width: 100%;
       max-width: 100%;
-      margin: 0 0 $margin;
+      margin: 0 0 $more-margin;
     }
     &.button, &.date {
       display: block;
@@ -68,7 +68,7 @@ form {
     font-size: .85em;
     color: red;
     position: absolute;
-    top: -16px;
+    top: -14px;
     left: 0;
   }
   .warning-label {

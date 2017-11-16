@@ -5,9 +5,10 @@ import validator from 'validator'
 let emptyState = {
   storeName: '',
   storeNameDirty: false,
+  storeNameError: 'Company Name is required',
   email: '',
   emailDirty: false,
-  emailError: '',
+  emailError: 'Email is required',
   address: '',
   addressDirty: false,
   addressError: '',
@@ -18,7 +19,7 @@ let emptyState = {
   websiteDIrty: false,
   password: '',
   passwordDirty: false,
-  passwordError: '',
+  passwordError: 'Password is required',
   submitted: false,
 }
 
@@ -41,13 +42,13 @@ class AdminForm extends React.Component {
         return null
       case 'password':
         if(value.length < 8)
-          return 'Password must be at least 8 characters long'
+          return 'Password must be 8 characters long'
         if(!validator.isAlphanumeric(value))
-          return 'Your password may only contain numbers and letters'
+          return 'Password may only contain numbers and letters'
         return null
       case 'website':
         if(!validator.isURL(value))
-          return 'you must provide a valid webiste URL'
+          return 'Please provide a valid webiste URL'
         return null
       case 'phone':
         if(validator.isAlpha(value))
@@ -103,29 +104,32 @@ class AdminForm extends React.Component {
         {util.renderIf(type !== 'login',
           <div className='form-field'>
             <input
+              id='storeName'
               name='storeName'
               placeholder='Company Name'
               type='text'
               value={ this.state.storeName }
               onChange={ this.handleChange }
             />
+            <span className='warning'>*</span>
+            {util.renderIf(this.state.storeNameDirty,
+              <label className='warning-label' htmlFor='storeName'>{ this.state.storeNameError }</label>)}
           </div>
         )}
 
-        {util.renderIf(this.state.emailDirty,
-          <p> { this.state.emailError } </p>)}
         <div className='form-field'>
           <input
+            id='email'
             name='email'
             placeholder='Email'
             type='email'
             value={ this.state.email }
             onChange={ this.handleChange }
           />
+          <span className='warning'>*</span>
+          {util.renderIf(this.state.emailDirty,
+            <label className='warning-label' htmlFor='email'>{ this.state.emailError }</label>)}
         </div>
-
-        {util.renderIf(this.state.addressDirty,
-          <p> { this.state.addressError } </p>)}
 
         {util.renderIf(type !== 'login',
           <div className='form-field'>
@@ -139,9 +143,6 @@ class AdminForm extends React.Component {
           </div>
         )}
 
-        {util.renderIf(this.state.phoneDirty,
-          <p> { this.state.phoneError } </p>)}
-
         {util.renderIf(type !== 'login',
           <div className='form-field'>
             <input
@@ -153,9 +154,6 @@ class AdminForm extends React.Component {
             />
           </div>
         )}
-
-        {util.renderIf(this.state.websiteDirty,
-          <p> { this.state.websiteError } </p>)}
 
         {util.renderIf(type !== 'login',
           <div className='form-field'>
@@ -169,16 +167,18 @@ class AdminForm extends React.Component {
           </div>
         )}
 
-        {util.renderIf(this.state.passwordDirty,
-          <p> { this.state.passwordError } </p>)}
         <div className='form-field'>
           <input
+            id='password'
             name='password'
             placeholder='Password'
             type='password'
             value={this.state.password}
             onChange={this.handleChange}
           />
+          <span className='warning'>*</span>
+          {util.renderIf(this.state.passwordDirty,
+            <label className='warning-label' htmlFor='password'>{ this.state.passwordError }</label>)}
         </div>
         <div className='form-field button'>
           <button type='submit'> { type } </button>
