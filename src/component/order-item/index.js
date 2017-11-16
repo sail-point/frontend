@@ -30,8 +30,9 @@ class OrderItem extends React.Component {
         <div>
           { !this.state.editing ?
             <div>
-              <p><strong>Employee:</strong> {order.employee}</p>
-              <p><strong>Total:</strong> {order.amount}</p>
+              <p><strong>Employee:</strong> {order.employee.firstName} {order.employee.lastName}</p>
+              {order.products.map((item, i) => (<p key={i}>{item.name} ${item.price}</p>))}
+              <p><strong>Total:</strong> ${order.amount}</p>
               <p><strong>Status:</strong> {order.isOpen ? <span style={{color: 'green'}}>Open</span> : <span style={{color: 'red'}}>Closed</span> }</p>
               {util.renderIf(closeOrder,
                 <div>

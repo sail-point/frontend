@@ -22,7 +22,7 @@ export const create = (order) => (store) => {
     .set('Content-Type', 'application/json')
     .send(order)
     .then(res => {
-      return store.dispatch(add(res.body))
+      return store.dispatch(add(res.body[0])) // Should change backend instead of this...
     })
 }
 
