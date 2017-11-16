@@ -47,6 +47,7 @@ export const updateRequest = (employee) => (store) => {
   let { token } = store.getState()
   return superagent.post(`${__API_URL__}/employees/${employee._id}`)
   .set('Authorization', `Bearer ${ token }`)
+  .send(employee)
   .then(response => {
     return store.dispatch(update(response.body))
   })
