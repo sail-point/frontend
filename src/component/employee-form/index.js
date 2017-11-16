@@ -60,15 +60,15 @@ class EmployeeForm extends React.Component {
           return 'you must provide a valid phone number'
         return null
       case 'hoursPerWeek':
-        if(!validator.isAlpha(value))
+        if(!validator.isInt(value))
           return 'You must provide hours per week'
         return null
       case 'salaryPerHour':
-        if(!validator.isAlpha(value))
+        if(!validator.isInt(value))
           return 'You must provide salary per hour'
         return null
       case 'pin':
-        if(value.length !== 8)
+        if(value.length !== 4)
           return 'Pin must be 4 characters long'
         return null
       default:
@@ -97,7 +97,6 @@ class EmployeeForm extends React.Component {
     let {
       type,
     } = this.props
-    let buttonText = this.props.employee ? 'update employee' : 'create employee'
     return (
       <form
         className='employee-form'
