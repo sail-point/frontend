@@ -19,6 +19,7 @@ class EmployeeItem extends React.Component {
 
   handleDestroy(employee){
     this.props.employeeDestroy(employee)
+    this.props.employeeUpdate(employee)
   }
 
   render(){
@@ -50,9 +51,10 @@ class EmployeeItem extends React.Component {
 
         {util.renderIf(editing,
           <EmployeeForm employee={employee} onComplete={this.handleUpdate} />)}
+        {util.renderIf(editing,
           <button onClick={() => this.setState({editing: false})}>
             Cancel
-          </button>
+          </button>)}
       </div>
     )
   }

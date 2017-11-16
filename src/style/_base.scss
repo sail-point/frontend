@@ -44,8 +44,10 @@ button {
   padding: 0.25em;
   cursor: pointer;
   border: 1px solid black;
-  width: 15em;
   text-transform: capitalize;
+  &:not(.buttonClear) {
+    width: 15em;
+  }
 }
 
 form {

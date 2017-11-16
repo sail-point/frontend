@@ -32,19 +32,20 @@ export const fetchAll = () => (store) => {
 export const createRequest = (employee) => (store) => {
   console.log('employee: ', employee)
   let { token } = store.getState()
+  console.log('{token}: ', {token})
   return superagent.post(`${__API_URL__}/employees`)
   .set('Authorization', `Bearer ${ token }`)
+  .send(employee)
   .then(response => {
     return store.dispatch(create(response.body))
   })
 }
 
 export const updateRequest = (employee) => (store) => {
-  console.log('employee: ', employee)
-  console.log('store: ', store)
   let { token } = store.getState()
-  return superagent.post(`${__API_URL__}/employees/${employee._id}`)
+  return superagent.put(`${__API_URL__}/employees/${employee._id}`)
   .set('Authorization', `Bearer ${ token }`)
+  .send(employee)
   .then(response => {
     return store.dispatch(update(response.body))
   })

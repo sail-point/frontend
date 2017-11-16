@@ -1,4 +1,6 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import * as util from '../../lib/util.js'
 import validator from 'validator'
 
@@ -73,8 +75,19 @@ class AdminForm extends React.Component {
   handleSubmit(event){
     event.preventDefault()
     let { storeNameError, emailError, passwordError } = this.state
-    if(this.props.type === 'login' || !storeNameError && !emailError && !passwordError){
+    if(this.props.type !== 'login' && !storeNameError && !emailError && !passwordError){
       this.props.onComplete(this.state)
+        .then(() => {
+          if (this.props.loggedIn)
+            this.props.history.push('/admin/product')
+        })
+      this.setState(emptyState)
+    } else if (this.props.type === 'login'){
+      this.props.onComplete(this.state)
+        .then(() => {
+          if (this.props.loggedIn)
+            this.props.history.push('/admin/product')
+        })
       this.setState(emptyState)
     } else {
       this.setState({
@@ -88,7 +101,6 @@ class AdminForm extends React.Component {
       })
     }
   }
-
 
   render(){
     let { type } = this.props
@@ -126,7 +138,8 @@ class AdminForm extends React.Component {
             value={ this.state.email }
             onChange={ this.handleChange }
           />
-          <span className='warning'>*</span>
+          {util.renderIf(type === 'signup',
+            <span className='warning'>*</span>)}
           {util.renderIf(this.state.emailDirty,
             <label className='warning-label' htmlFor='email'>{ this.state.emailError }</label>)}
         </div>
@@ -176,7 +189,8 @@ class AdminForm extends React.Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <span className='warning'>*</span>
+          {util.renderIf(type === 'signup',
+            <span className='warning'>*</span>)}
           {util.renderIf(this.state.passwordDirty,
             <label className='warning-label' htmlFor='password'>{ this.state.passwordError }</label>)}
         </div>
@@ -189,4 +203,6 @@ class AdminForm extends React.Component {
   }
 }
 
-export default AdminForm
+const mapStateToProps = (state) => ({loggedIn: !!state.token})
+
+export default connect(mapStateToProps)(AdminForm)
