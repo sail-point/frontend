@@ -1,6 +1,7 @@
 import './header.scss'
 import React from 'react'
 import { log } from 'util'
+import logo from '../../assets/sailpoint.svg'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as util from '../../lib/util.js'
@@ -15,6 +16,7 @@ class Header extends React.Component {
     return (
       <header>
         <div className='inner'>
+          <img className='logo' src={logo} />
           <h1><Link to='/'>Sail Point</Link></h1>
           {util.renderIf(!employee && !loggedIn,
             <nav className='navbar'>

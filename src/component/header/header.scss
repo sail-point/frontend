@@ -5,6 +5,11 @@ header {
   background: $color-purple;
   display: inline-block;
   h1 {
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+    margin-top: 30px;
+    margin-left: 20px;
     a {
       text-decoration: none;
     }
@@ -42,4 +47,10 @@ header {
     float: right;
     display: block;
   }
+}
+
+.logo {
+  width: 100px;
+  margin-left: 30px;
+  display: inline-block;
 }
