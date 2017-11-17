@@ -14,12 +14,12 @@
   box-shadow: 0px 5px 5px -0px rgba(0, 0, 0, 0.3);
   .error {
     text-align: center;
-    color: $color-red;
+    color: $temp-color;
     margin-bottom: 7px;
   }
   .pinPrompt {
     text-align: center;
-    color: $color-navy;
+    color: $temp-color;
     margin-bottom: 7px;
   }
   .pinBox {
@@ -38,7 +38,7 @@
       border: 1px solid $color-navy;
       border-radius: 50%;
       &.shaded {
-        background-color: $color-silver*2; 
+        background-color: $color-silver*2;
       }
     }
   }
