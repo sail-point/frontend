@@ -12,16 +12,18 @@ class Header extends React.Component {
     let {employee} = this.props
     return (
       <nav className='navbar'>
-        {util.renderIf(loggedIn,
-          <AdminNav />
-        )}
-        {util.renderIf(employee,
-        <ul>
-          <li><Link to='/employee/products'>Products</Link></li>
-          <li><Link to='/employee/employees'>Employees</Link></li>
-          <li><Link to='/employee/orders'>Orders</Link></li>
-        </ul>
-      )}
+        <div className='inner'>
+          {util.renderIf(loggedIn,
+            <AdminNav />
+          )}
+          {util.renderIf(employee,
+          <ul>
+            <li><Link to='/employee/products'>Products</Link></li>
+            <li><Link to='/employee/employees'>Employees</Link></li>
+            <li><Link to='/employee/orders'>Orders</Link></li>
+          </ul>
+          )}
+        </div>
       </nav>
     )
   }
