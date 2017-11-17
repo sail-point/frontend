@@ -32,7 +32,7 @@ class Keypad extends React.Component {
       .then(action => {
         console.log(`${this.props.employee.firstName} has logged in.`)
         this.setState(emptyState)
-        this.props.history.push('/employee/dashboard')
+        this.props.history.push('/employee/products')
       })
       .catch(() => {
         this.setState({ pin: '', pinCount: 0, pinDirty: true, pinClass: 'pinBox shaker' })
