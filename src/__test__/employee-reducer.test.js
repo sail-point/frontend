@@ -171,5 +171,15 @@ describe('businessEmployee reducer', () => {
       expect(state[1].firstName).toBe('shimako')
       expect(state[1].salaryPerHour).toBe(15)
     })
+
+    test('set should fail with invalid payload', () => {
+      let shouldFail = () => {
+        reducer(undefined, {
+          type: 'EMPLOYEES_UPDATE',
+          payload: {},
+        })
+      }
+      expect(shouldFail()).toEqual(undefined)
+    })
   })
 })
