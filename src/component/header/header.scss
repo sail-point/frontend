@@ -4,6 +4,11 @@ header {
   color: white;
   background: $color-purple;
   display: inline-block;
+  h1 {
+    a {
+      text-decoration: none;
+    }
+  }
   a {
     &.button {
       margin-top: 0;
