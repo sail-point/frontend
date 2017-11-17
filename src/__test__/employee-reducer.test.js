@@ -182,4 +182,98 @@ describe('businessEmployee reducer', () => {
       expect(shouldFail()).toEqual(undefined)
     })
   })
+
+  describe('EMPLOYEE_DESTROY', () => {
+    test('Should destroy an existing product in product array', () => {
+      let employees = [
+        {
+          firstName: 'sei',
+          lastName: 'satou',
+          title: 'manager',
+          email: 'rosagigantea@lillian.net',
+          phoneNumber: '206-453-2437',
+          hoursPerWeek: 30,
+          salaryPerHour: 20,
+          pin: '2222',
+          _id: 1,
+        },
+        {
+          firstName: 'shimako',
+          lastName: 'toudou',
+          title: 'hostess',
+          email: 'rosagiganteaenbouton@lillian.net',
+          phoneNumber: '206-453-2438',
+          hoursPerWeek: 15,
+          salaryPerHour: 15,
+          pin: '3333',
+          _id: 2,
+        },
+      ]
+      let action = {
+        type: 'EMPLOYEE_DESTROY',
+        payload: {
+          firstName: 'shimako',
+          lastName: 'toudou',
+          title: 'hostess',
+          email: 'rosagiganteaenbouton@lillian.net',
+          phoneNumber: '206-453-2438',
+          hoursPerWeek: 15,
+          salaryPerHour: 20,
+          pin: '3333',
+          _id: 2},
+      }
+      let state = reducer(employees, action)
+      // console.log('employees.count: ', employees.count)
+      expect(state.count).toBe(1)
+      // expect(state[1].salaryPerHour).toBe(20)
+    })
+
+    test('remove should fail with no payload', () => {
+      let shouldFail = () => {
+        reducer(undefined, {type: 'EMPLOYEE_DESTROY'})
+      }
+      expect(shouldFail).toThrow('Employee required')
+    })
+
+    // test('update should fail with no payload', () => {
+    //   let employees = [
+    //     {
+    //       firstName: 'sei',
+    //       lastName: 'satou',
+    //       title: 'manager',
+    //       email: 'rosagigantea@lillian.net',
+    //       phoneNumber: '206-453-2437',
+    //       hoursPerWeek: 30,
+    //       salaryPerHour: 20,
+    //       pin: '2222',
+    //       _id: 1,
+    //     },
+    //     {
+    //       firstName: 'shimako',
+    //       lastName: 'toudou',
+    //       title: 'hostess',
+    //       email: 'rosagiganteaenbouton@lillian.net',
+    //       phoneNumber: '206-453-2438',
+    //       hoursPerWeek: 15,
+    //       salaryPerHour: 15,
+    //       pin: '3333',
+    //       _id: 2,
+    //     },
+    //   ]
+    //   let action = {}
+    //   let state = reducer(employees, action)
+    //   expect(state[1].firstName).toBe('shimako')
+    //   expect(state[1].salaryPerHour).toBe(15)
+    // })
+    //
+    // test('set should fail with invalid payload', () => {
+    //   let shouldFail = () => {
+    //     reducer(undefined, {
+    //       type: 'EMPLOYEES_UPDATE',
+    //       payload: {},
+    //     })
+    //   }
+    //   expect(shouldFail()).toEqual(undefined)
+    // })
+  })
 })
