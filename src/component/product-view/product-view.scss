@@ -12,3 +12,30 @@
     margin-bottom: $margin;
   }
 }
+.product-item:nth-child(3n) {
+  border-top: 8px solid $color-green;
+}
+
+.product-item:nth-child(3n+1) {
+  border-top: 8px solid $color-pink;
+}
+
+.product-item:nth-child(3n+2) {
+  border-top: 8px solid $color-purple;
+}
+
+.product-item {
+  padding: $pad;
+  background-color: white;
+  margin-top: $margin;
+  margin-right: $less-margin;
+  display: inline-block;
+  width: 31%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  border-left-width: 10px;
+  @media (max-width: 700px) {
+    display: block;
+    width: 90%;
+    margin-left: 5%;
+  }
+}
