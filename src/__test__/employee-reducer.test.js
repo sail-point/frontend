@@ -11,6 +11,36 @@ describe('businessEmployee reducer', () => {
     expect(state).toEqual('hello world')
   })
 
+  test('should return emptyState on TOKEN_REMOVE', () => {
+    let loggedIn = {
+      count: 2,
+      data:[
+        {
+          firstName: 'yumi',
+          lastName: 'fukuzawa',
+          title: 'manager',
+          email: 'rosachinensisenbouton@lillian.net',
+          phoneNumber: '206-453-2435',
+          hoursPerWeek: 30,
+          salaryPerHour: 20,
+          pin: '3534',
+        },
+        {
+          firstName: 'sachiko',
+          lastName: 'ogasawara',
+          title: 'hostess',
+          email: 'rosachinensis@lillian.net',
+          phoneNumber: '206-453-2436',
+          hoursPerWeek: 30,
+          salaryPerHour: 25,
+          pin: '3343',
+        },
+      ],
+    }
+    let state = reducer(loggedIn, {type: 'TOKEN_REMOVE'})
+    expect(state).toEqual([])
+  })
+
   describe('EMPLOYEE_CREATE', () => {
     test('should create the employee', () => {
       let action  = {
@@ -172,7 +202,7 @@ describe('businessEmployee reducer', () => {
       expect(state[1].salaryPerHour).toBe(15)
     })
 
-    test('set should fail with invalid payload', () => {
+    test('update should fail with invalid payload', () => {
       let shouldFail = () => {
         reducer(undefined, {
           type: 'EMPLOYEES_UPDATE',
@@ -223,9 +253,7 @@ describe('businessEmployee reducer', () => {
           _id: 2},
       }
       let state = reducer(employees, action)
-      // console.log('employees.count: ', employees.count)
-      expect(state.count).toBe(1)
-      // expect(state[1].salaryPerHour).toBe(20)
+      expect(state.length).toBe(1)
     })
 
     test('destroy should fail with no payload', () => {
