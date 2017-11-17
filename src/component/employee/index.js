@@ -21,6 +21,10 @@ class Employee extends React.Component {
       })
   }
 
+  componentWillMount(){
+    this.props.employeeFetchAll()
+  }
+
   render(){
     let {
       employees,
@@ -50,6 +54,7 @@ let mapStateToProps = (state) => ({
 
 let mapDispatchToProps = (dispatch) => ({
   employeeCreate: (data) => dispatch(employee.createRequest(data)),
+  employeeFetchAll: () => dispatch(employee.fetchAll()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Employee)

@@ -20,10 +20,10 @@ let emptyState = {
   phoneNumberError: 'Phone number is required',
   hoursPerWeek: '',
   hoursPerWeekDirty: false,
-  hoursPerWeekError: 'Expected hours per week is required',
+  hoursPerWeekError: 'Hours-per-week is required',
   salaryPerHour: '',
   salaryPerHourDirty: false,
-  salaryPerHourError: 'Salary is required',
+  salaryPerHourError: 'Salary-per-hour is required',
   pin: '',
   pinDirty: false,
   pinError: 'Pin is required',
@@ -148,7 +148,7 @@ class EmployeeForm extends React.Component {
           <p>{this.state.hoursPerWeekError}</p>
           <input
             name='hoursPerWeek'
-            placeholder='Hours per Week'
+            placeholder='Hours-per-week'
             type='number'
             value={ this.state.hoursPerWeek }
             onChange={ this.handleChange }
@@ -158,7 +158,7 @@ class EmployeeForm extends React.Component {
           <p>{this.state.salaryPerHourError}</p>
           <input
             name='salaryPerHour'
-            placeholder='Salary per Hour'
+            placeholder='Salary-per-hour'
             type='number'
             value={ this.state.salaryPerHour }
             onChange={ this.handleChange }
