@@ -98,7 +98,7 @@ describe('businessEmployee reducer', () => {
   })
 
   describe('EMPLOYEE_UPDATE', () => {
-    test.only('Should update an existing product in product array', () => {
+    test('Should update an existing product in product array', () => {
       let employees = [
         {
           firstName: 'sei',
@@ -137,10 +137,29 @@ describe('businessEmployee reducer', () => {
           _id: 2},
       }
       let state = reducer(employees, action)
-      console.log('state: ', state)
-      console.log('state[1]: ', state[1])
       expect(state[1].firstName).toBe('shimako')
       expect(state[1].salaryPerHour).toBe(20)
     })
+  })
+
+  test('update should fail with no payload', () => {
+    let action = {
+      type: 'EMPLOYEE_UPDATE',
+      payload: {
+        firstName: 'shimako',
+        lastName: 'toudou',
+        title: 'hostess',
+        email: 'rosagiganteaenbouton@lillian.net',
+        phoneNumber: '206-453-2438',
+        hoursPerWeek: 15,
+        salaryPerHour: 20,
+        pin: '3333',
+        _id: 2},
+    }
+    let shouldFail = () => {
+      reducer(undefined, {type: 'EMPLOYEE_UPDATE'})
+    }
+    console.log('shouldFail: ', shouldFail)
+    // expect(shouldFail).toThrow('employees must be an array')
   })
 })
