@@ -7,8 +7,11 @@ import * as auth from '../../action/auth.js'
 
 class Landing extends React.Component {
   componentWillMount(){
-    if(this.props.loggedIn)
+    if(!this.props.loggedIn) {
+      this.props.history.push('/login');
+    } else {
       this.props.history.push('/admin/product')
+    }
   }
   render(){
     let {location} = this.props
