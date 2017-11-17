@@ -1,3 +1,4 @@
+import './employee-form.scss'
 import React from 'react'
 import * as util from '../../lib/util.js'
 import validator from 'validator'
@@ -196,7 +197,7 @@ class EmployeeForm extends React.Component {
             onChange={this.handleChange}
           />
         </div>
-        <div className='form-field button'>
+        <div className='form-field button-field'>
           <button type='submit'> Submit </button>
         </div>
       </form>

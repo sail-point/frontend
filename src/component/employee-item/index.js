@@ -1,3 +1,4 @@
+import './employee-item.scss'
 import React from 'react'
 import EmployeeForm from '../employee-form'
 import {connect} from 'react-redux'
@@ -35,16 +36,16 @@ class EmployeeItem extends React.Component {
       <div className='employee-item'>
         {util.renderIf(!editing,
           <div>
-            <p>Name: {employee.firstName} {employee.lastName}</p>
-            <p>Title: {employee.title} </p>
-            <p>Email: {employee.email} </p>
-            <p>Phone: {employee.phoneNumber} </p>
-            <p>Hours per week: {employee.hoursPerWeek} </p>
-            <p>Salary per hour: {employee.salaryPerHour} </p>
-            <p>Pin: {employee.pin} </p>
-            <p>Hired: {employee.hired} </p>
-            <p>Terminated: {employee.terminated} </p>
-            <button className='update' onClick={() => this.setState({editing: true})}> Update </button>
+            <p><strong>Name:</strong> {employee.firstName} {employee.lastName}</p>
+            <p><strong>Title:</strong> {employee.title} </p>
+            <p><strong>Email:</strong> {employee.email} </p>
+            <p><strong>Phone:</strong> {employee.phoneNumber} </p>
+            <p><strong>Hours per week:</strong> {employee.hoursPerWeek} </p>
+            <p><strong>Salary per hour:</strong> {employee.salaryPerHour} </p>
+            <p><strong>Pin:</strong> {employee.pin} </p>
+            <p><strong>Hired:</strong> {employee.hired} </p>
+            <p><strong>Terminated:</strong> {employee.terminated} </p>
+            <button className='edit' onClick={() => this.setState({editing: true})}> Edit </button>
             <button className='delete' onClick={() => employeeDestroy(employee)}> Delete </button>
           </div>
         )}
