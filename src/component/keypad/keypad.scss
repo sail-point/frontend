@@ -29,16 +29,16 @@
     .pinDot {
       width: 20px;
       height: 20px;
-      border: 2px solid $color-navy;
+      border: 2px solid $color-purple;
       color: $color-silver;
       display: inline-block;
       background-color: $color-silver;
       margin-right: $margin/2;
       margin-left: $margin/2;
-      border: 1px solid $color-navy;
+      border: 1px solid $color-purple;
       border-radius: 50%;
       &.shaded {
-        background-color: $color-silver*2;
+        background-color: $color-purple*2;
       }
     }
   }
@@ -53,10 +53,11 @@
       padding: 0;
       background-color: $color-silver;
       border-radius: 50%;
-      transition: background-color .5s;
+      transition: background-color .5s, color .5s;
       &:hover {
-        transition: background-color 0s;
-        background-color: $color-silver*1.08;
+        transition: background-color 0s, color 0s;
+        background-color: $color-purple*2;
+        color: white;
       }
     }
   }

@@ -1,0 +1,18 @@
+@import 'vars';
+
+nav {
+  background-color: $color-purple;
+  display: inline-block;
+}
+
+header {
+  .inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1em;
+    position: relative;
+    @media (max-width: 959px) {
+      max-width: 100%;
+    }
+  }
+}

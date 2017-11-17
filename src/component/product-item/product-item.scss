@@ -6,6 +6,15 @@
   }
   button {
     margin-top: $pad;
+    background-color: $color-white;
+    color: $color-black;
+    width: 33%;
+    font-size: 1em;
+    width: 6em;
+    padding: 0.2em;
+    letter-spacing: 0.1em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
     &.edit {
 
     }

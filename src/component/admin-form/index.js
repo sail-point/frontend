@@ -194,7 +194,7 @@ class AdminForm extends React.Component {
           {util.renderIf(this.state.passwordDirty,
             <label className='warning-label' htmlFor='password'>{ this.state.passwordError }</label>)}
         </div>
-        <div className='form-field button'>
+        <div className='form-field button-field'>
           <button type='submit'> { type } </button>
         </div>
 

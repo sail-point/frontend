@@ -1,6 +1,6 @@
 import superagent from 'superagent'
-import {cookieDelete} from '../lib/util.js'
-
+import * as util from '../lib/util.js'
+window.util = util
 export const tokenSet = (token) => ({
   type: 'TOKEN_SET',
   payload: token,
@@ -11,7 +11,7 @@ export const tokenRemove = () => ({
 })
 
 export const logout = () => {
-  cookieDelete('X-SailPoint-Token')
+  util.cookieDelete('X-SailPoint-Token')
   return tokenRemove()
 }
 
@@ -21,6 +21,7 @@ export const signup = (user) => (store) => {
     .withCredentials()
     .then(response => {
       console.log('SIGNUP ::', { response })
+      util.cookieCreate('X-SailPoint-Token', response.body.token, 7)
       return store.dispatch(tokenSet(response.body.token))
     })
 }
@@ -31,6 +32,7 @@ export const login = (user) => (store) => {
     .withCredentials()
     .then(response => {
       console.log('ADMIN_LOGIN ::', { response })
+      util.cookieCreate('X-SailPoint-Token', response.body.token, 7)
       return store.dispatch(tokenSet(response.body.token))
     })
 }
