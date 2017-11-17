@@ -49,6 +49,7 @@ class OrderForm extends React.Component {
     e.preventDefault()
     // add product id to product array.
     this.props.onComplete(this.state)
+    this.setState(this.emptyState)
   }
 
   render(){
