@@ -12,7 +12,6 @@ export const tokenRemove = () => ({
 
 export const logout = () => {
   util.cookieDelete('X-SailPoint-Token')
-  window.location = '/login' // hacky temp solution!
   return tokenRemove()
 }
 
