@@ -13,7 +13,7 @@ let cookieTime = (days) => {
 
 export const cookieCreate = (name, value, days) => {
   let expires = days ? ` ${cookieTime(days)}` : ''
-  document.cookie = `${name}=${value}${expires} path='/'`
+  document.cookie = `${name}=${value};${expires} path='/'`
 }
 
 export const cookieFetchAll = () => {

@@ -49,6 +49,7 @@ class OrderForm extends React.Component {
     e.preventDefault()
     // add product id to product array.
     this.props.onComplete(this.state)
+    this.setState(this.emptyState)
   }
 
   render(){
@@ -72,9 +73,11 @@ class OrderForm extends React.Component {
           ))}
         </select>
         <button onClick={this.handleAdd}>+</button>
-        {this.state.products.map((item, i) => (<p id={item._id} key={i}>{item.name} ${item.price}
-          <button onClick={this.deleteProduct}>Delete</button>
-        </p>))}
+        {this.state.products.map((item, i) => {
+          return <p id={item._id} key={i}>{item.name} ${item.price}
+            <button onClick={this.deleteProduct}>Delete</button>
+          </p>
+        })}
         <p>Total: ${this.state.amount}</p>
         <button onClick={this.handleSubmit} className='submit-order' type='submit'>{this.props.order ? 'Update' : 'Create'} </button>
       </form>

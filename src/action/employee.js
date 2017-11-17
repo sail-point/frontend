@@ -30,11 +30,10 @@ export const fetchAll = () => (store) => {
 }
 
 export const createRequest = (employee) => (store) => {
-  console.log('employee: ', employee)
   let { token } = store.getState()
-  console.log('{token}: ', {token})
   return superagent.post(`${__API_URL__}/employees`)
   .set('Authorization', `Bearer ${ token }`)
+  .set('Content-Type', 'application/json')
   .send(employee)
   .then(response => {
     return store.dispatch(create(response.body))
@@ -45,6 +44,7 @@ export const updateRequest = (employee) => (store) => {
   let { token } = store.getState()
   return superagent.put(`${__API_URL__}/employees/${employee._id}`)
   .set('Authorization', `Bearer ${ token }`)
+  .set('Content-Type', 'application/json')
   .send(employee)
   .then(response => {
     return store.dispatch(update(response.body))
@@ -52,8 +52,6 @@ export const updateRequest = (employee) => (store) => {
 }
 
 export const destroyRequest = (employee) => (store) => {
-  console.log('employee: ', employee)
-  console.log('store: ', store)
   let {token} = store.getState()
   return superagent.delete(`${__API_URL__}/employees/${employee._id}`)
   .set('Authorization', `Bearer ${token}`)
