@@ -172,44 +172,20 @@ describe('businessEmployee reducer', () => {
     })
 
     test('update should fail with no payload', () => {
-      let employees = [
-        {
-          firstName: 'sei',
-          lastName: 'satou',
-          title: 'manager',
-          email: 'rosagigantea@lillian.net',
-          phoneNumber: '206-453-2437',
-          hoursPerWeek: 30,
-          salaryPerHour: 20,
-          pin: '2222',
-          _id: 1,
-        },
-        {
-          firstName: 'shimako',
-          lastName: 'toudou',
-          title: 'hostess',
-          email: 'rosagiganteaenbouton@lillian.net',
-          phoneNumber: '206-453-2438',
-          hoursPerWeek: 15,
-          salaryPerHour: 15,
-          pin: '3333',
-          _id: 2,
-        },
-      ]
-      let action = {}
-      let state = reducer(employees, action)
-      expect(state[1].firstName).toBe('shimako')
-      expect(state[1].salaryPerHour).toBe(15)
+      let shouldFail = () => {
+        reducer(undefined, {type: 'EMPLOYEE_UPDATE'})
+      }
+      expect(shouldFail).toThrow('Employee required')
     })
 
     test('update should fail with invalid payload', () => {
       let shouldFail = () => {
         reducer(undefined, {
-          type: 'EMPLOYEES_UPDATE',
+          type: 'EMPLOYEE_UPDATE',
           payload: {},
         })
       }
-      expect(shouldFail()).toEqual(undefined)
+      expect(shouldFail).toThrow('Employee requires a first name, last name, title, email, phone number, hours-per-week, salary-per-hour, and pin')
     })
   })
 
