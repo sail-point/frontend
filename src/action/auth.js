@@ -1,5 +1,5 @@
 import superagent from 'superagent'
-import { cookieDelete } from '../lib/util.js'
+import {cookieDelete} from '../lib/util.js'
 
 export const tokenSet = (token) => ({
   type: 'TOKEN_SET',
@@ -9,6 +9,11 @@ export const tokenSet = (token) => ({
 export const tokenRemove = () => ({
   type: 'TOKEN_REMOVE',
 })
+
+export const logout = () => {
+  cookieDelete('X-SailPoint-Token')
+  return tokenRemove()
+}
 
 export const signup = (user) => (store) => {
   return superagent.post(`${__API_URL__}/admin/signup`)
@@ -28,9 +33,4 @@ export const login = (user) => (store) => {
       console.log('ADMIN_LOGIN ::', { response })
       return store.dispatch(tokenSet(response.body.token))
     })
-}
-
-export const logout = () => {
-  cookieDelete('X-SailPoint-Token')
-  return tokenRemove()
 }
