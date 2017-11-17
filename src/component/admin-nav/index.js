@@ -11,7 +11,7 @@ class adminNav extends React.Component {
       <nav className='navbar'>
         <ul>
           <li><button onClick={this.props.logout}>logout</button></li>
-          <li><Link to='/employee/login'>Employee Login</Link></li>
+          <li><Link className='button' to='/employee/login'>Employee Login</Link></li>
         </ul>
       </nav>
     )
@@ -23,7 +23,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(auth.logout()),
+  logout: () => {
+    dispatch(auth.logout())
+    this.props.history.push('/')
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(adminNav)

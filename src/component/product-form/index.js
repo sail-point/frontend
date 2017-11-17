@@ -121,7 +121,7 @@ class ProductForm extends React.Component {
             onChange={this.handleChange}
           />
         </div>
-        <div className='form-field button'>
+        <div className='form-field button-field'>
           <button type='submit'>{this.props.product ? 'Update' : 'Create'} </button>
         </div>
       </form>

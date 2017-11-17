@@ -9,7 +9,6 @@ import Order from '../order'
 import Employee from '../employee'
 import ProductView from '../product-view'
 import Header from '../header'
-import AdminNav from '../admin-nav'
 import * as util from '../../lib/util.js'
 
 class App extends React.Component {
