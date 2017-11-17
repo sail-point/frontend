@@ -15,6 +15,10 @@ class Order extends React.Component {
     if(!props.employee)
       this.props.history.push('/employee/login')
 
+    this.state = {
+      open: true,
+      close: false,
+    }
     this.updateComponent = this.updateComponent.bind(this)
     this.closeOrder = this.closeOrder.bind(this)
     this.orderUpdate = this.orderUpdate.bind(this)
@@ -64,18 +68,44 @@ class Order extends React.Component {
       updateOrder,
     } = this.props
 
+    let {
+      open,
+      close,
+    } = this.state
+
     return (
       <div className='order'>
         <h1> Orders </h1>
         <OrderForm employee={employee} products={products} onComplete={this.updateComponent}/>
-        {orders.data.map((item, i) =>
-          <OrderItem
-            key={i}
-            order={item}
-            products={products}
-            closeOrder={this.closeOrder}
-            orderUpdate={this.orderUpdate}
-          />
+        <button onClick={() => this.setState({open: true, close: false})}> Open Orders </button>
+        <button onClick={() => this.setState({open: false, close: true})}> Closed Orders </button>
+        {util.renderIf(open,
+          <div>
+            {orders.data.map((item, i) => {
+              if(item.isOpen)
+                return <OrderItem
+                  key={i}
+                  order={item}
+                  products={products}
+                  closeOrder={this.closeOrder}
+                  orderUpdate={this.orderUpdate}
+                />
+            })}
+          </div>
+        )}
+        {util.renderIf(close,
+          <div>
+            {orders.data.map((item, i) => {
+              if(!item.isOpen)
+                return <OrderItem
+                  key={i}
+                  order={item}
+                  products={products}
+                  closeOrder={this.closeOrder}
+                  orderUpdate={this.orderUpdate}
+                />
+            })}
+          </div>
         )}
       </div>
     )
