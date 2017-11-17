@@ -1,6 +1,6 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {BrowserRouter,Route} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom'
 import Keypad from '../keypad'
 import Dashboard from '../dashboard'
 import Landing from '../landing'
@@ -13,20 +13,23 @@ import AdminNav from '../admin-nav'
 import * as util from '../../lib/util.js'
 
 class App extends React.Component {
-  componentWillMount(){
+  componentWillMount() {
     console.log('THE PROPS', this.props)
   }
 
-  render(){
-    let {loggedIn} = this.props
-    let {employee} = this.props
+  render() {
+    let { loggedIn } = this.props
+    let { employee } = this.props
     return (
       <div className='app'>
         <BrowserRouter>
           <div>
-            {util.renderIf(loggedIn,
+            {/* {util.renderIf(loggedIn,
               <AdminNav />
-            )}
+            )} */}
+
+
+            <Header employee={employee} loggedIn={loggedIn} />
             <Route exact path='/' component={Landing} />
             <Route exact path='/signup' component={Landing} />
             <Route exact path='/login' component={Landing} />
@@ -36,9 +39,11 @@ class App extends React.Component {
         </BrowserRouter>
         <BrowserRouter>
           <div>
-            {util.renderIf(employee,
-              <Header employee={employee} />
-            )}
+            {/* {util.renderIf(employee,
+              <Header employee={employee}  />
+            )} */}
+
+            <Header employee={employee} loggedIn={loggedIn} />
             <Route path='/employee/login' component={Keypad} />
             <Route exact path='/employee/dashboard' render={(props) => (<Dashboard {...props} employee={employee} />)} />
             <Route exact path='/employee/products' render={(props) => (<ProductView {...props} employee={employee} />)} />

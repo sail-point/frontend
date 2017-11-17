@@ -3,8 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import * as auth from '../../action/auth.js'
 
-class adminNav extends React.Component {
-
+class AdminNav extends React.Component {
   render() {
     let {employee} = this.props
     return (
@@ -26,4 +25,4 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(auth.logout()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(adminNav)
+export default connect(mapStateToProps, mapDispatchToProps)(AdminNav)
