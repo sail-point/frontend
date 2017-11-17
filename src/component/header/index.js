@@ -41,7 +41,6 @@ class Header extends React.Component {
               <ul>
                 <li><Link className='button' to='/employee/products'>Products</Link></li>
                 <li><Link className='button' to='/employee/orders'>Orders</Link></li>
-                <li><Link className='button' to='/admin/product'>Back To admin</Link></li>
               </ul>
 
               <ul className='signingInSection'>
