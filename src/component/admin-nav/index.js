@@ -20,9 +20,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => {
-    dispatch(auth.logout())
-  },
+  logout: () => ispatch(auth.logout()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminNav)
