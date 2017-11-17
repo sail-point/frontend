@@ -50,6 +50,7 @@ class Header extends React.Component {
 
               <ul className='signingInSection'>
                 <li>Clock</li>
+                <button className='logout-btn' onClick={this.props.logout}>logout</button>
               </ul>
             </nav>
           )}
