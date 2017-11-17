@@ -23,7 +23,7 @@ export default (state=emptyState, {type, payload}) => {
       return state.map(employee => employee._id === payload._id ? payload : employee)
     case 'EMPLOYEE_DESTROY':
       validateEmployee(payload)
-      return state.filter(employee => employee._id !== payload.id)
+      return state.filter(employee => employee._id !== payload._id)
     case 'TOKEN_REMOVE':
       return emptyState
     default:
