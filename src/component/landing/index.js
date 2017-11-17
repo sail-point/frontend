@@ -7,9 +7,7 @@ import * as auth from '../../action/auth.js'
 
 class Landing extends React.Component {
   componentWillMount(){
-    if(!this.props.loggedIn && location.pathname !== '/signup') {
-      this.props.history.push('/login');
-    } else {
+    if(this.props.loggedIn) {
       this.props.history.push('/admin/product')
     }
   }
