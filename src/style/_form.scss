@@ -26,12 +26,11 @@ form {
     top: -18px;
   }
   input {
-    border: 2px solid black;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     display: inline;
     padding-left: $pad;
     padding-top: .2em;
     padding-bottom: .2em;
-    border-color: $temp-color;
     -webkit-transition: border-radius .25s;
     transition: border-radius .25s;
     &:focus {
