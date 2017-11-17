@@ -81,3 +81,13 @@ form {
     }
   }
 }
+
+input#firstName {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  display: inline;
+  padding-left: $pad;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  -webkit-transition: border-radius .25s;
+  transition: border-radius .25s;
+}

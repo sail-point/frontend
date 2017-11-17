@@ -1,4 +1,3 @@
-import './order-form.scss'
 import React from 'react'
 import * as util from '../../lib/util.js'
 
@@ -64,6 +63,7 @@ class OrderForm extends React.Component {
           type='text'
           id='firstName'
           name='firstName'
+          className='firstNameOrder'
           value={employee ? employee.firstName : 'Nobody'}
           disabled='true'
         />
