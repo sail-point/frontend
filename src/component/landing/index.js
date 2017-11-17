@@ -19,16 +19,12 @@ class Landing extends React.Component {
         {util.renderIf(location.pathname === '/signup',
           <div>
             <AdminForm onComplete={this.props.signup} history={this.props.history} />
-            <p> Already have an account? </p>
-            <Link to='/login'> Login </Link>
           </div>
         )}
 
         {util.renderIf(location.pathname === '/login',
           <div>
             <AdminForm type='login' onComplete={this.props.login} history={this.props.history} />
-            <p> Dont have an account? </p>
-            <Link to='/signup'> Signup </Link>
           </div>
         )}
       </div>

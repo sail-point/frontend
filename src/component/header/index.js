@@ -1,41 +1,70 @@
 import './header.scss'
 import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import AdminNav from '../admin-nav'
+import { log } from 'util'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
+import { renderIf } from '../../lib/util.js'
 
 class Header extends React.Component {
 
   render() {
-    let {loggedIn} = this.props
-    let {employee} = this.props
+    let { employee, loggedIn } = this.props
+
     return (
-      <nav className='navbar'>
+      <header>
         <div className='inner'>
-          {util.renderIf(loggedIn,
-            <AdminNav />
+          <h1><Link to='/'>Sail Point</Link></h1>
+          {util.renderIf(!employee && !loggedIn,
+            <nav className='navbar'>
+              <ul className='signingInSection'>
+                <li><Link className='button' to='/login'>Log In</Link></li>
+                <li><Link className='button' to='/signup'>Sign Up</Link></li>
+              </ul>
+            </nav>
           )}
-          {util.renderIf(employee,
-          <ul>
-            <li><Link to='/employee/products'>Products</Link></li>
-            <li><Link to='/employee/employees'>Employees</Link></li>
-            <li><Link to='/employee/orders'>Orders</Link></li>
-          </ul>
+
+          {util.renderIf(loggedIn && !employee,
+            <nav className='navbar'>
+              <ul>
+                <li><Link className='button' to='/admin/employee'>Employee</Link></li>
+                <li><Link className='button' to='/admin/product'>Product</Link></li>
+                <li><Link className='button' to='/employee/login'>Employee Login</Link></li>
+              </ul>
+
+              <button className='logout-btn' onClick={this.props.logout}>logout</button>
+            </nav>
+          )}
+          {util.renderIf(loggedIn && employee,
+            <nav className='navbar'>
+              <ul>
+                <li><Link className='button' to='/employee/products'>Products</Link></li>
+                <li><Link className='button' to='/employee/employees'>Employees</Link></li>
+                <li><Link className='button' to='/employee/orders'>Orders</Link></li>
+                <li><Link className='button' to='/admin/product'>Back To admin</Link></li>
+              </ul>
+
+              <ul className='signingInSection'>
+                <button className='logout-btn' onClick={this.props.logout}>logout</button>
+              </ul>
+            </nav>
           )}
         </div>
-      </nav>
+      </header>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  loggedIn: !!state.token,
+const mapStateToProps = (state) => ({
   employee: state.employee,
+  loggedIn: !!state.token,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(auth.logout()),
+const mapDispatchToProps = (dispatch, props) => ({
+  logout: () => {
+    dispatch(auth.logout())
+    props.history.push('/')
+  },
 })
-
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
