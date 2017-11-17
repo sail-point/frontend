@@ -1,3 +1,4 @@
+import './employee-form.scss'
 import React from 'react'
 import * as util from '../../lib/util.js'
 import validator from 'validator'

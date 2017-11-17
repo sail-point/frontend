@@ -1,3 +1,4 @@
+import './employee-item.scss'
 import React from 'react'
 import EmployeeForm from '../employee-form'
 import {connect} from 'react-redux'
@@ -44,7 +45,7 @@ class EmployeeItem extends React.Component {
             <p>Pin: {employee.pin} </p>
             <p>Hired: {employee.hired} </p>
             <p>Terminated: {employee.terminated} </p>
-            <button className='update' onClick={() => this.setState({editing: true})}> Update </button>
+            <button className='edit' onClick={() => this.setState({editing: true})}> Edit </button>
             <button className='delete' onClick={() => employeeDestroy(employee)}> Delete </button>
           </div>
         )}
