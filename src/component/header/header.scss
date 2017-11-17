@@ -3,9 +3,11 @@ header {
   width: 100%;
   color: white;
   background: $color-purple;
-  height: 100px;
+  display: inline-block;
   a {
-    
+    &.button {
+      margin-top: 0;
+    }
     &:visited {
       color: white;
       text-decoration: none;
@@ -15,15 +17,13 @@ header {
   a:hover {
     color: $color-pink;
   }
-  div {
-    position: relative;
-    max-width: 960px;
-    margin: 0 auto;
-  }
   ul {
-    // float: left;
+    margin-bottom: 0;
     li {
-      display: inline;
+      display: inline-block;
+      margin-bottom: $less-margin;
+      margin-right: $less-margin;
+      width: auto;
     }
   }
   button.logout-btn {

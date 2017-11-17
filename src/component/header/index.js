@@ -14,13 +14,13 @@ class Header extends React.Component {
 
     return (
       <header>
-        <div>
+        <div className='inner'>
           <h1><Link to='/'>Sail Point</Link></h1>
           {util.renderIf(!employee && !loggedIn,
             <nav className='navbar'>
               <ul className='signingInSection'>
-                <li><Link to='/login'>Log In</Link></li>
-                <li><Link to='/signup'>Sign Up</Link></li>
+                <li><Link className='button' to='/login'>Log In</Link></li>
+                <li><Link className='button' to='/signup'>Sign Up</Link></li>
               </ul>
             </nav>
           )}
@@ -28,28 +28,24 @@ class Header extends React.Component {
           {util.renderIf(loggedIn && !employee,
             <nav className='navbar'>
               <ul>
-                <li><Link to='/admin/employee'>Employee</Link></li>
-                <li><Link to='/admin/product'>Product</Link></li>
-                <li><Link to='/employee/login'>Employee Login</Link></li>
+                <li><Link className='button' to='/admin/employee'>Employee</Link></li>
+                <li><Link className='button' to='/admin/product'>Product</Link></li>
+                <li><Link className='button' to='/employee/login'>Employee Login</Link></li>
               </ul>
 
-              <ul className='signingInSection'>
-                <li></li>
-              </ul>
               <button className='logout-btn' onClick={this.props.logout}>logout</button>
             </nav>
           )}
           {util.renderIf(loggedIn && employee,
             <nav className='navbar'>
               <ul>
-                <li><Link to='/employee/products'>Products</Link></li>
-                <li><Link to='/employee/employees'>Employees</Link></li>
-                <li><Link to='/employee/orders'>Orders</Link></li>
-                <li><Link to='/admin/product'>Back To admin</Link></li>
+                <li><Link className='button' to='/employee/products'>Products</Link></li>
+                <li><Link className='button' to='/employee/employees'>Employees</Link></li>
+                <li><Link className='button' to='/employee/orders'>Orders</Link></li>
+                <li><Link className='button' to='/admin/product'>Back To admin</Link></li>
               </ul>
 
               <ul className='signingInSection'>
-                <li>Clock</li>
                 <button className='logout-btn' onClick={this.props.logout}>logout</button>
               </ul>
             </nav>
@@ -71,5 +67,4 @@ const mapDispatchToProps = (dispatch, props) => ({
     props.history.push('/')
   },
 })
-
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
