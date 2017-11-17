@@ -25,7 +25,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => ({
   logout: () => {
     dispatch(auth.logout())
-    this.props.history.push('/')
   },
 })
 
