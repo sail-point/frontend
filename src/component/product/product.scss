@@ -1,21 +1,30 @@
 @import 'vars';
 
-.product {
-  padding: $pad;
+.product-item:nth-child(3n) {
+  border-top: 8px solid $color-green;
+}
 
-.product > .product-form {
-  p {
-    text-align: left;
-    }
-  }
+.product-item:nth-child(3n+1) {
+  border-top: 8px solid $color-pink;
+}
+
+.product-item:nth-child(3n+2) {
+  border-top: 8px solid $color-purple;
 }
 
 .product-item {
   padding: $pad;
+  background-color: white;
   margin-top: $margin;
-  box-shadow: 1px 1px $color-black;
-  border-radius: 10%;
-  border-top: 1px solid $color-green;
-  border-left: .5px solid $color-green;
+  margin-right: $less-margin;
+  display: inline-block;
+  width: 31%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   border-left-width: 10px;
+  @media (max-width: 700px) {
+    display: block;
+    width: 80%;
+    margin-left: 10%;
+  }
 }
