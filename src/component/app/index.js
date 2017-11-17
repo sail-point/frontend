@@ -28,8 +28,10 @@ class App extends React.Component {
               <AdminNav />
             )} */}
 
+            {util.renderIf(employee,
+              <Header employee={employee} loggedIn={loggedIn} />
+            )}
 
-            <Header employee={employee} loggedIn={loggedIn} />
             <Route exact path='/' component={Landing} />
             <Route exact path='/signup' component={Landing} />
             <Route exact path='/login' component={Landing} />
@@ -43,7 +45,9 @@ class App extends React.Component {
               <Header employee={employee}  />
             )} */}
 
-            <Header employee={employee} loggedIn={loggedIn} />
+            {util.renderIf(employee,
+              <Header employee={employee} />
+            )}
             <Route path='/employee/login' component={Keypad} />
             <Route exact path='/employee/dashboard' render={(props) => (<Dashboard {...props} employee={employee} />)} />
             <Route exact path='/employee/products' render={(props) => (<ProductView {...props} employee={employee} />)} />

@@ -16,6 +16,7 @@ class Header extends React.Component {
 
         <nav className='navbar'>
           <ul>
+            <li>Not loggedin</li>
             <li><Link to='/login'>Log In</Link></li>
             <li><Link to='/signup'>Sign Up</Link></li>
           </ul>
@@ -23,6 +24,7 @@ class Header extends React.Component {
 
         <nav className='navbar'>
           <ul>
+            <li>loggedIn not employee</li>
             <li><Link to='/admin/employee'>Employee</Link></li>
             <li><Link to='/admin/product'>Product</Link></li>
           </ul>
@@ -30,6 +32,7 @@ class Header extends React.Component {
 
         <nav className='navbar'>
           <ul>
+            <li>loggedIn Employee</li>
             <li><Link to='/employee/products'>Products</Link></li>
             <li><Link to='/employee/employees'>Employees</Link></li>
             <li><Link to='/employee/orders'>Orders</Link></li>
@@ -40,8 +43,6 @@ class Header extends React.Component {
             <li><Link to='/employee/login'>Employee Login</Link></li>
           </ul>
         </nav>
-
-
       </header>
     )
   }
