@@ -28,12 +28,12 @@ h1,h2,h3,h4,p,ul,form {
 a {
   text-decoration: underline;
   font-family: sans-serif;
-  color: $color-blue;
+  color: $temp-color;
 
-  &:active { color: $color-blue * 0.5; }
-  &:visited { color:  $color-fuchsia * 0.8; }
+  &:active { color: $temp-color * 0.5; }
+  &:visited { color:  $temp-color * 0.8; }
   &:hover {
-    color: $color-blue;
+    color: $temp-color;
     cursor: pointer;
   }
 }
@@ -83,12 +83,12 @@ form {
     padding-left: $pad;
     padding-top: .2em;
     padding-bottom: .2em;
-    border-color: $color-orange;
+    border-color: $temp-color;
     -webkit-transition: border-radius .25s;
     transition: border-radius .25s;
     &:focus {
       border-radius: .5em;
-      border-color: $color-green;
+      border-color: $temp-color;
     }
   }
 
@@ -118,7 +118,7 @@ form {
     	position: absolute;
     	top: 0px;
     	left: 3px;
-    	color: $color-green;
+    	color: $temp-color;
     }
   }
 

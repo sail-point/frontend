@@ -104,6 +104,7 @@ class ProductForm extends React.Component {
             value={this.state.price}
             onChange={this.handleChange}
             placeholder='Price'
+            step='0.01'
           />
           <span className='warning'>*</span>
           {util.renderIf(this.state.priceDirty,

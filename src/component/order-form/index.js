@@ -15,6 +15,7 @@ class OrderForm extends React.Component {
     this.state = props.order ? {...this.emptyState, ...props.order} : this.emptyState
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
+    this.deleteProduct = this.deleteProduct.bind(this)
   }
 
   handleAdd(e){
@@ -29,10 +30,26 @@ class OrderForm extends React.Component {
     })
   }
 
+  deleteProduct(e) {
+    e.preventDefault()
+    let removeThis = e.target.parentNode.id
+    this.setState(prevState => {
+      return {...prevState,
+        amount: prevState.amount - prevState.products.reduce((acc, item) => {
+          if (item._id === removeThis)
+            return acc + item.price
+          return acc
+        }, 0),
+        products: prevState.products.filter(item => {
+          return item._id !== removeThis}
+        )}
+    })}
+
   handleSubmit(e){
     e.preventDefault()
     // add product id to product array.
     this.props.onComplete(this.state)
+    this.setState(this.emptyState)
   }
 
   render(){
@@ -41,9 +58,7 @@ class OrderForm extends React.Component {
       products,
     } = this.props
     return (
-      <form
-        className='order-form'
-        onSubmit={this.handleSubmit}>
+      <form className='order-form'>
         <label htmlFor='firstName'>Employee</label>
         <input
           type='text'
@@ -58,9 +73,13 @@ class OrderForm extends React.Component {
           ))}
         </select>
         <button onClick={this.handleAdd}>+</button>
-        {this.state.products.map((item, i) => (<p key={i}>{item.name} ${item.price}</p>))}
+        {this.state.products.map((item, i) => {
+          return <p id={item._id} key={i}>{item.name} ${item.price}
+            <button onClick={this.deleteProduct}>Delete</button>
+          </p>
+        })}
         <p>Total: ${this.state.amount}</p>
-        <button className='submit-order' type='submit'>{this.props.order ? 'Update' : 'Create'} </button>
+        <button onClick={this.handleSubmit} className='submit-order' type='submit'>{this.props.order ? 'Update' : 'Create'} </button>
       </form>
     )
   }
